@@ -319,9 +319,60 @@ def get_color_mapping_according_to_type(t):
         return 'plasma'
 
 
+def count_frost_days(data, **kwargs):
+    return np.sum(data < 0, **kwargs)
+
+
+def count_summer_days(data, **kwargs):
+    return np.sum(data > 25, **kwargs)
+
+
+def count_icing_days(data, **kwargs):
+    return np.sum(data < 0, **kwargs)
+
+
+def count_tropical_nights(data, **kwargs):
+    return np.sum(data > 20, **kwargs)
+
+
+def max_daily_max_temp(data, **kwargs):
+    return np.max(data, **kwargs)
+
+
+def max_daily_min_temp(data, **kwargs):
+    return np.max(data, **kwargs)
+
+
+def min_daily_max_temp(data, **kwargs):
+    return np.min(data, **kwargs)
+
+
+def min_daily_min_temp(data, **kwargs):
+    return np.min(data, **kwargs)
+
+
+# Add more index functions as needed
+
 def index_function_by_name(index_name, data, **kwargs):
-    if index_name == 'TXx':
-        return np.sum(data > 0, **kwargs)
+    if index_name == 'FD':
+        return count_frost_days(data, **kwargs)
+    elif index_name == 'SU':
+        return count_summer_days(data, **kwargs)
+    elif index_name == 'ID':
+        return count_icing_days(data, **kwargs)
+    elif index_name == 'TR':
+        return count_tropical_nights(data, **kwargs)
+    elif index_name == 'TXx':
+        return max_daily_max_temp(data, **kwargs)
+    elif index_name == 'TNx':
+        return max_daily_min_temp(data, **kwargs)
+    elif index_name == 'TXn':
+        return min_daily_max_temp(data, **kwargs)
+    elif index_name == 'TNn':
+        return min_daily_min_temp(data, **kwargs)
+    # Add more elif clauses for other indices
+    else:
+        raise ValueError(f"Unknown index name: {index_name}")
 
 
 def create_color_levels(aggregated_data, cmap_name='viridis'):

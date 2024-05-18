@@ -1,6 +1,7 @@
 import base64
 
 import firebase_admin
+import numpy as np
 from firebase_admin import db, credentials, storage
 
 import uuid
@@ -297,6 +298,24 @@ def get_all_users_endpoint():
         return jsonify(users), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+
+def get_color_mapping_according_to_type(t):
+    if t == 'temp' or 'temperature':
+        return 'plasma'
+    elif t == 'PR' or 'pr':
+        return 'viridis'
+    elif t == 'HW' or 'hw':
+        return 'magma'
+    elif t == 'CW' or 'cw':
+        return 'inferno'
+    else:
+        return 'plasma'
+
+
+def index_function_by_name(index_name, data, **kwargs):
+    if index_name == 'TXx':
+        return np.sum(data > 0, **kwargs)
 
 
 if __name__ == "__main__":

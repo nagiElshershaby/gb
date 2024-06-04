@@ -524,7 +524,7 @@ def plot_time_custom_function_with_dates(file_path, variable_name, start_date=No
 
 @app.route('/plot_local', methods=['POST'])
 def plot_endpoint():
-    # this function will be called when the endpoint is hit
+    # this function
     request_data = request.get_json()
 
     file_path = request_data.get('file_path')

@@ -351,8 +351,102 @@ def min_daily_min_temp(data, **kwargs):
     return np.min(data, **kwargs)
 
 
-# Add more index functions as needed
+# Additional Climdex indices functions
+def count_growing_season_length(tmean, **kwargs):
+    """
+    Calculate the growing season length (GSL) for each grid point.
+    It counts the number of days between the first period of at least six consecutive days with daily mean temperature above 5°C
+    and the first period after July 1 (or January 1 in the southern hemisphere) of six consecutive days with daily mean temperature below 5°C.
+    """
+    # Check that the input is a 3D array: (time, lat, lon)
+    if tmean.ndim != 3:
+        raise ValueError("Input data must be a 3D array with dimensions (time, lat, lon)")
 
+    # Initialize the result array with NaNs
+    gsl = np.full(tmean.shape[1:], np.nan)
+
+    # Iterate over each grid point
+    for lat in range(tmean.shape[1]):
+        for lon in range(tmean.shape[2]):
+            daily_mean_temp = tmean[:, lat, lon]
+            above_5 = daily_mean_temp > 5
+            growing_season_started = False
+            consecutive_days_above_5 = 0
+
+            for i, day in enumerate(above_5):
+                if day:
+                    consecutive_days_above_5 += 1
+                    if consecutive_days_above_5 >= 6:
+                        growing_season_started = True
+                else:
+                    consecutive_days_above_5 = 0
+
+                if growing_season_started:
+                    gsl[lat, lon] = i + 1
+                    break
+
+    return gsl
+
+
+def count_heating_degree_days(data, base_temp=18, **kwargs):
+    """
+    Calculate Heating Degree Days (HDD).
+    It's the sum of the differences between the base temperature (18°C) and the daily mean temperature for all days when the daily mean temperature is below 18°C.
+    """
+    daily_mean_temp = data
+    heating_degree_days = np.sum(np.maximum(base_temp - daily_mean_temp, 0), **kwargs)
+    return heating_degree_days
+
+
+def count_cooling_degree_days(data, base_temp=18, **kwargs):
+    """
+    Calculate Cooling Degree Days (CDD).
+    It's the sum of the differences between the daily mean temperature and the base temperature (18°C) for all days when the daily mean temperature is above 18°C.
+    """
+    daily_mean_temp = data
+    cooling_degree_days = np.sum(np.maximum(daily_mean_temp - base_temp, 0), **kwargs)
+    return cooling_degree_days
+
+
+def count_warm_days(tmax, **kwargs):
+    """
+    Calculate the Warm Days (TX90p).
+    It's the percentage of days when daily maximum temperature is above the 90th percentile.
+    """
+    threshold = np.percentile(tmax, 90)
+    warm_days = np.sum(tmax > threshold, **kwargs)
+    return warm_days / len(tmax) * 100
+
+def TX10p(tmax, **kwargs):
+    """
+    Calculate the Warm Days (TX10p).
+    It's the percentage of days when daily maximum temperature is above the 90th percentile.
+    """
+    threshold = np.percentile(tmax, 10)
+    warm_days = np.sum(tmax > threshold, **kwargs)
+    return warm_days / len(tmax) * 100
+
+
+def count_cold_nights(tmin, **kwargs):
+    """
+    Calculate the Cold Nights (TN10p).
+    It's the percentage of days when daily minimum temperature is below the 10th percentile.
+    """
+    threshold = np.percentile(tmin, 10)
+    cold_nights = np.sum(tmin < threshold, **kwargs)
+    return cold_nights / len(tmin) * 100
+
+def TN90p(tmin, **kwargs):
+    """
+    Calculate the Cold Nights (TN90p).
+    It's the percentage of days when daily minimum temperature is below the 10th percentile.
+    """
+    threshold = np.percentile(tmin, 90)
+    cold_nights = np.sum(tmin < threshold, **kwargs)
+    return cold_nights / len(tmin) * 100
+
+
+# Index function dispatcher
 def index_function_by_name(index_name, data, **kwargs):
     if index_name == 'FD':
         return count_frost_days(data, **kwargs)
@@ -370,7 +464,20 @@ def index_function_by_name(index_name, data, **kwargs):
         return min_daily_max_temp(data, **kwargs)
     elif index_name == 'TNn':
         return min_daily_min_temp(data, **kwargs)
-    # Add more elif clauses for other indices
+    elif index_name == 'GSL':
+        return count_growing_season_length(data, **kwargs)
+    elif index_name == 'HDD':
+        return count_heating_degree_days(data, **kwargs)
+    elif index_name == 'CDD':
+        return count_cooling_degree_days(data, **kwargs)
+    elif index_name == 'TX90p':
+        return count_warm_days(data, **kwargs)
+    elif index_name == 'TN90p':
+        return TN90p(data, **kwargs)
+    elif index_name == 'TX10p':
+        return TX10p(data, **kwargs)
+    elif index_name == 'TN10p':
+        return count_cold_nights(data, **kwargs)
     else:
         raise ValueError(f"Unknown index name: {index_name}")
 
@@ -441,6 +548,10 @@ def plot_time_custom_function_with_dates(file_path, variable_name, start_date=No
         data = dataset.variables[var_name][:].squeeze()
         time_variable = dataset.variables['time']
 
+        # Handle NaN and Inf values
+        if np.any(np.isnan(data)) or np.any(np.isinf(data)):
+            data = np.nan_to_num(data, nan=0.0, posinf=0.0, neginf=0.0)
+
         # Handle different dimensions
         if len(data.shape) == 2:
             aggregated_data = data
@@ -465,6 +576,10 @@ def plot_time_custom_function_with_dates(file_path, variable_name, start_date=No
                 aggregated_data = index_function_by_name(index_name, sliced_data, axis=0)
         else:
             raise ValueError("Unsupported data shape. Expected 2D or 3D+ data.")
+
+        # Handle NaN and Inf values
+        if np.any(np.isnan(aggregated_data)) or np.any(np.isinf(aggregated_data)):
+            aggregated_data = np.nan_to_num(aggregated_data, nan=0.0, posinf=0.0, neginf=0.0)
 
         fig = plt.figure(figsize=(8, 6))
         ax = fig.add_subplot(111, projection=ccrs.PlateCarree())

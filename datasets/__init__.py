@@ -81,25 +81,56 @@ def get_min_max_dates(file_path):
         dataset.close()
 
 
-def get_available_indexes(t):
-    if t == 'temp':
+def get_available_indexes_according_to_type(t):
+    # if t == 'temp':
+    #     return [
+    #         'FD', 'SU', 'ID', 'TR', 'GSL', 'TXx', 'TNx', 'TXn', 'TNn', 'TN10p', 'TX10p',
+    #         'TN90p', 'TX90p', 'WSDI', 'CSDI', 'DTR', 'ETR', 'CDDcoldn', 'GDDgrown',
+    #         'HDDheatn', 'TMge5', 'TMlt5', 'TMge10', 'TMlt10', 'TMm', 'TXm', 'TNm',
+    #         'TXge30', 'TXge35', 'TXgt50p', 'TNlt2', 'TNltm2', 'TNltm20', 'TXbdTNbd'
+    #     ]
+    # elif t == 'pr':
+    #     return ['Rx1day', 'Rx5day', 'SPI', 'SPEI', 'SDII', 'R10mm', 'R20mm', 'Rnnmm', 'CDD', 'CWD', 'R95p', 'R99p',
+    #             'R95pTOT', 'R99pTOT', 'PRCPTOT']
+    # elif t == 'lone':
+    #     return []
+    # else:
+    #     return ['HWN', 'HWF', 'HWD', 'HWM', 'HWA', 'CWN_ECF', 'CWF_ECF', 'CWD_ECF', 'CWM_ECF', 'CWA_ECF']
+    #
+
+    if t == 'min_temp':
+        # FD, TR, TNx, TNn, TN10p, TN90p, TNlt2, TNltm2, TNltm20,
         return [
-            'FD', 'SU', 'ID', 'TR', 'GSL', 'TXx', 'TNx', 'TXn', 'TNn', 'TN10p', 'TX10p',
-            'TN90p', 'TX90p', 'WSDI', 'CSDI', 'DTR', 'ETR', 'CDDcoldn', 'GDDgrown',
-            'HDDheatn', 'TMge5', 'TMlt5', 'TMge10', 'TMlt10', 'TMm', 'TXm', 'TNm',
-            'TXge30', 'TXge35', 'TXgt50p', 'TNlt2', 'TNltm2', 'TNltm20', 'TXbdTNbd'
+            'FD', 'TR', 'TNx', 'TNn', 'TN10p', 'TN90p', 'TNlt2', 'TNltm2', 'TNltm20'
+        ]
+    elif t == 'max_temp':
+        # SU, ID, TXx, TXn, TX10p, TX90p, WSDI, CSDI, TXm, TNm, TXge30, TXge35, TXgt50p,
+        return [
+            'SU', 'ID', 'TXx', 'TXn', 'TX10p', 'TX90p', 'WSDI', 'CSDI', 'TXm', 'TNm', 'TXge30', 'TXge35', 'TXgt50p'
+        ]
+    # for both min and max temp: DTR, ETR, TXbdTNbd
+    elif t == 'min_and_max':
+        return [
+            'DTR', 'ETR', 'TXbdTNbd'
+        ]
+    elif t == 'mean_temp':
+        # GSL, CDDcoldn, GDDgrown, HDDheatn, TMge5, TMlt5, TMge10, TMlt10, TMm,
+        return [
+            'GSL', 'CDDcoldn', 'GDDgrown', 'HDDheatn', 'TMge5', 'TMlt5', 'TMge10', 'TMlt10', 'TMm'
         ]
     elif t == 'pr':
-        return ['Rx1day', 'Rx5day', 'SPI', 'SPEI', 'SDII', 'R10mm', 'R20mm', 'Rnnmm', 'CDD', 'CWD', 'R95p', 'R99p',
-                'R95pTOT', 'R99pTOT', 'PRCPTOT']
-    elif t == 'lone':
-        return []
+        # Rx1day, Rx5day, SDII, R10mm, R20mm, Rnnmm, CDD, CWD, R95p, R99p, R95pTOT, R99pTOT, PRCPTOT
+        return [
+            'Rx1day', 'Rx5day', 'SDII', 'R10mm', 'R20mm', 'Rnnmm', 'CDD', 'CWD', 'R95p', 'R99p', 'R95pTOT', 'R99pTOT',
+            'PRCPTOT'
+        ]
     else:
-        return ['HWN', 'HWF', 'HWD', 'HWM', 'HWA', 'CWN_ECF', 'CWF_ECF', 'CWD_ECF', 'CWM_ECF', 'CWA_ECF']
+        # a lone index
+        return [t]
 
 
-def create_dataset(path_local, name, type, access, view, description, var_name):
-    available_indexes = get_available_indexes(type)
+def create_dataset(path_local, name, type, access, view, description):
+    available_indexes = get_available_indexes_according_to_type(type)
     # Extracts the minimum and maximum dates from a NetCDF file.
     min_date, max_date = get_min_max_dates(path_local)
 
@@ -112,7 +143,7 @@ def create_dataset(path_local, name, type, access, view, description, var_name):
         'type': type,
         'description': description,
         'available_indexes': available_indexes,
-        'var_name': var_name,
+        'var_name': type,
         'min_date': min_date,
         'max_date': max_date,
         'access': access,
@@ -129,8 +160,8 @@ def send_dataset_to_firebase(dataset, path_local):
     ref.set(dataset)
 
 
-def upload_dataset(path_local, name, type, access, view, description, var_name):
-    dataset = create_dataset(path_local, name, type, access, view, description, var_name)
+def upload_dataset(path_local, name, type, access, view, description):
+    dataset = create_dataset(path_local, name, type, access, view, description)
     send_dataset_to_firebase(dataset, path_local)
 
 
@@ -146,10 +177,9 @@ def upload_dataset_endpoint():
     access = data.get('access')
     view = data.get('view')
     description = data.get('description')
-    var_name = data.get('var_name')
 
     # Upload the dataset
-    upload_dataset(path_local, name, type, access, view, description, var_name)
+    upload_dataset(path_local, name, type, access, view, description)
 
     return jsonify({"message": "Dataset uploaded successfully"})
 
@@ -417,6 +447,7 @@ def count_warm_days(tmax, **kwargs):
     warm_days = np.sum(tmax > threshold, **kwargs)
     return warm_days / len(tmax) * 100
 
+
 def TX10p(tmax, **kwargs):
     """
     Calculate the Warm Days (TX10p).
@@ -435,6 +466,7 @@ def count_cold_nights(tmin, **kwargs):
     threshold = np.percentile(tmin, 10)
     cold_nights = np.sum(tmin < threshold, **kwargs)
     return cold_nights / len(tmin) * 100
+
 
 def TN90p(tmin, **kwargs):
     """

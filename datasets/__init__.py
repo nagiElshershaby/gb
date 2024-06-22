@@ -109,9 +109,21 @@ def get_available_indexes_according_to_type(t):
             'SU', 'ID', 'TXx', 'TXn', 'TX10p', 'TX90p', 'WSDI', 'CSDI', 'TXm', 'TNm', 'TXge30', 'TXge35', 'TXgt50p'
         ]
     # for both min and max temp: DTR, ETR, TXbdTNbd
-    elif t == 'min_and_max':
+    elif t == 'min_max_temp':
         return [
-            'DTR', 'ETR', 'TXbdTNbd'
+            'DTR', 'ETR', 'TXbdTNbd',  # needs both min and max
+            'FD', 'TR', 'TNx', 'TNn', 'TN10p', 'TN90p', 'TNlt2', 'TNltm2', 'TNltm20', # needs min
+            'SU', 'ID', 'TXx', 'TXn', 'TX10p', 'TX90p', 'WSDI', 'CSDI', 'TXm', 'TNm', 'TXge30', 'TXge35', 'TXgt50p' # needs max
+        ]
+    elif t == 'min_mean_temp':
+        return [
+            'FD', 'TR', 'TNx', 'TNn', 'TN10p', 'TN90p', 'TNlt2', 'TNltm2', 'TNltm20', # needs min
+            'GSL', 'CDDcoldn', 'GDDgrown', 'HDDheatn', 'TMge5', 'TMlt5', 'TMge10', 'TMlt10', 'TMm'
+        ]
+    elif t == 'max_mean_temp':
+        return [
+            'SU', 'ID', 'TXx', 'TXn', 'TX10p', 'TX90p', 'WSDI', 'CSDI', 'TXm', 'TNm', 'TXge30', 'TXge35', 'TXgt50p', # needs max
+            'GSL', 'CDDcoldn', 'GDDgrown', 'HDDheatn', 'TMge5', 'TMlt5', 'TMge10', 'TMlt10', 'TMm'
         ]
     elif t == 'mean_temp':
         # GSL, CDDcoldn, GDDgrown, HDDheatn, TMge5, TMlt5, TMge10, TMlt10, TMm,
@@ -740,3 +752,27 @@ def plot_firebase_endpoint():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+
+# in the beginning: we wanted the system to work on the data coming from the gov which is forcasted, thus the system was mainly done for
+#                   Egypt gov to use, we wanted all the indexes funcs. to have all its parameters flixable for the admin to change for what
+#                   he knows suits Egypt wither more than the europian difinition
+
+# now: No data is coming from the gov, the system is expected to work similar in all condition with any data it's given
+#      whatever the sources of this data, this change has affected the hoped outcome of the final product
+#      because it makes no sense anymore for the admin to change the indexes equations parameters,
+#      also losing the forcasted data advantage, for the code though we had to make it more flixable to handle any
+#      NetCDF file thet it encounters due to the many sources of data expected,
+#      handling NetCDF files leave us no choice but to use python for our logic,
+#      having no exp what soever in using it as a backend we needed a place to store the data which lead us to Firebase
+#      so the data is stored in Firebase, and the Logic is in python
+
+# what we have accomplished so far: uploading datasets to Firebase from the Admin or the Analyst,
+#                                   the Admin datasets are global while the ones from the analysts are for them only
+#                                   the admin can do this too as he might want his uploaded dataset not to be global
+#                                   the normal user can do the analysis on his own data too but it won't be stored
+#                                   in the server (performing local analysis on the device)
+#                                   the normal user can request to be an Analyst which the admin can approve or reject
+#                                   we have finished implementing 47 indexes functions
+#

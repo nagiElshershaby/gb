@@ -171,11 +171,9 @@ def send_dataset_to_firebase(dataset, path_local):
     ref = db.reference(f'datasets/{dataset["access"]}/{dataset["id"]}')
     ref.set(dataset)
 
-
 def upload_dataset(path_local, name, type, access, view, description):
     dataset = create_dataset(path_local, name, type, access, view, description)
     send_dataset_to_firebase(dataset, path_local)
-
 
 @app.route('/upload_dataset', methods=['POST'])
 def upload_dataset_endpoint():
@@ -750,6 +748,27 @@ def plot_firebase_endpoint():
         return jsonify({"error": str(e)}), 500
 
 
+@app.route('/add_sector', methods=['POST'])
+def add_sector_to_firebase():
+    try:
+        # Get data from the request
+        data = request.get_json()
+        # Extract parameters from the data
+        sector = data.get('sector')
+        indexes = data.get('indexes')
+
+        sector_data = {
+            'sector_name': sector,
+            'indexes': indexes
+        }
+        ref = db.reference(f'sectors/{sector}')
+        ref.set(sector_data)
+
+        return jsonify({"message": "Sector added successfully"}), 200
+    except FirebaseError as e:
+        error_message = f'Error updating dataset: {str(e)}'
+        return jsonify({'error': error_message}), 500
+
 if __name__ == "__main__":
     app.run(debug=True)
 
@@ -775,4 +794,5 @@ if __name__ == "__main__":
 #                                   in the server (performing local analysis on the device)
 #                                   the normal user can request to be an Analyst which the admin can approve or reject
 #                                   we have finished implementing 47 indexes functions
+#                                   and we have also implemented the result as a Time chart
 #

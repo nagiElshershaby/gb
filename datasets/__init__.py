@@ -487,39 +487,543 @@ def TN90p(tmin, **kwargs):
     cold_nights = np.sum(tmin < threshold, **kwargs)
     return cold_nights / len(tmin) * 100
 
+def calculate_TMm(data, **kwargs):
+    """
+    Calculate the Mean Daily Mean Temperature (TMm).
+    It's the mean of the daily mean temperatures over a period.
+    """
+    mean_TM = np.mean(data, **kwargs)
+    print(mean_TM)
+    return mean_TM
 
+
+def calculate_TXm(data, **kwargs):
+    """
+    Calculate the Mean TX (TXm).
+    It's the mean of the daily maximum temperature.
+    """
+    mean_TX = np.mean(data, **kwargs)
+    return mean_TX
+
+
+def calculate_TNm(data, **kwargs):
+    """
+    Calculate the mean daily minimum temperature (TNm).
+    """
+    mean_TNm = np.mean(data, **kwargs)
+    return mean_TNm
+
+
+def calculate_gdd(data, base_temp=10, **kwargs):
+    """
+    Calculate Growing Degree Days (GDD).
+    It's the sum of the differences between the daily mean temperature and the base temperature (10°C) for all days when the daily mean temperature is above 10°C.
+    """
+    daily_mean_temp = data
+    growing_degree_days = np.sum(np.maximum(daily_mean_temp - base_temp, 0), **kwargs)
+    return growing_degree_days
+
+
+def calculate_extreme_temperature_range(data, **kwargs):
+    # Calculate the maximum daily maximum temperature and minimum daily minimum temperature
+    max_tx = np.sum(data, **kwargs)
+    min_tn = np.sum(data, **kwargs)
+    # Calculate Extreme Temperature Range (ETR)
+    etr = max_tx - min_tn
+
+    return etr
+
+
+def calculate_daily_temperature_range(data, axis=0):
+    # Calculate the daily max and min along the time axis
+    max_tx = np.max(data, axis=axis)
+    min_tn = np.min(data, axis=axis)
+
+    # Calculate the daily temperature range for each day
+    data_range = (max_tx - min_tn) / data.shape[axis]
+
+    return data_range
+
+
+def calculate_WSDI(TX_daily, base_period, percentile_90th):
+    warm_spell_days = []
+    consecutive_count = 0
+
+    for temp in TX_daily:
+        if temp > percentile_90th:
+            consecutive_count += 1
+        else:
+            if consecutive_count >= 6:
+                warm_spell_days.extend([1] * consecutive_count)
+            consecutive_count = 0
+
+    # Check if the last segment was a warm spell
+    if consecutive_count >= 6:
+        warm_spell_days.extend([1] * consecutive_count)
+
+    # Step 3: Calculate the Warm Spell Duration Index (WSDI)
+    annual_WSDI = sum(warm_spell_days)
+
+    return np.array([annual_WSDI])  # Ensure to return an array
+
+
+def calculate_90th_percentile(TX_daily, base_period=(1961, 1990), axis=None):
+    TXin90 = np.percentile(TX_daily, 90)
+
+    if axis is None:
+        return calculate_WSDI(TX_daily, base_period, TXin90)
+    elif axis == 0:
+        return np.apply_along_axis(calculate_WSDI, 0, TX_daily, base_period=base_period, percentile_90th=TXin90)
+    elif axis == 1:
+        return np.apply_along_axis(calculate_WSDI, 1, TX_daily, base_period=base_period, percentile_90th=TXin90)
+    else:
+        raise ValueError("Invalid axis. Axis must be None, 0, or 1.")
+
+
+def count_tm_ge_5(data, **kwargs):
+    return np.mean(data >= 5, **kwargs)
+
+
+def count_TM_lt_5(data, **kwargs):
+    return np.mean(data < 5, **kwargs)
+
+
+def count_tm_ge_10(data, **kwargs):
+    return np.mean(data >= 10, **kwargs)
+
+
+def count_TM_lt_10(data, **kwargs):
+    return np.mean(data < 10, **kwargs)
+
+
+def count_tx_ge_30(data, **kwargs):
+    # Count the number of days where TX ≥ threshold
+    days_tx_ge_30 = np.sum(data >= 30, **kwargs)
+
+    return days_tx_ge_30
+
+
+def count_tx_ge_35(data, **kwargs):
+    # Count the number of days where TX ≥ threshold
+    days_tx_ge_35 = np.sum(data >= 35, **kwargs)
+
+    return days_tx_ge_35
+
+
+def percentage_days_gt_50p(data, axis=None):
+    # Calculate the percentile value
+    percentile_value = np.percentile(data, 50, axis=axis)
+
+    # Count the number of days where TX > 50th percentile
+    days_gt_50p = np.sum(data > percentile_value, axis=axis)
+
+    # Calculate the percentage
+    total_days = np.prod(data.shape) if axis is None else data.shape[axis]
+    percentage = (days_gt_50p / total_days) * 100
+
+    return percentage
+
+
+def count_tn_lt_2(data, **kwargs):
+    # Count the number of days where TN < threshold
+    days_tn_lt_2 = np.sum(data < 2, **kwargs)
+
+    return days_tn_lt_2
+
+
+def count_tn_lt_minus_2(data, **kwargs):
+    days_tn_lt_minus_2 = np.sum(data < -2, **kwargs)
+
+    return days_tn_lt_minus_2
+
+
+def count_tn_lt_minus_20(data, **kwargs):
+    days_tn_lt_minus_20 = np.sum(data < -20, **kwargs)
+    return days_tn_lt_minus_20
+
+
+def TXbdTNbd(data, d=None, **kwargs):
+    """
+    Calculates the annual count of consecutive d days where both TX < 5th percentile
+    and TN < 5th percentile, where 10 >= d >= 2.
+
+    Parameters:
+    - data: numpy array or list of temperature data (TX and TN) for the year
+    - d: number of consecutive days to consider (default: None)
+
+    Returns:
+    - count: the annual count of consecutive d days meeting the condition
+    """
+    if d is None:
+        d = 2 or 10
+    elif d < 2 or d > 10:
+        raise ValueError("Invalid value for 'd'. The value of d should be between 2 and 10 (inclusive).")
+
+    # Convert data to a numpy array if it is a list
+    data = np.array(data)
+
+    # Calculate the 5th percentile for TX and TN
+    tx_percentile = np.percentile(data[:, 0], 5)
+    tn_percentile = np.percentile(data[:, 1], 5)
+
+    # Find the consecutive d days where both TX and TN are below the 5th percentile
+    consecutive_count = 0
+    count = 0
+    for i in range(len(data)):
+        if np.all(np.less(data[i, 0], tx_percentile)) and np.all(np.less(data[i, 1], tn_percentile)):
+            consecutive_count += 1
+            if consecutive_count == d:
+                count += 1
+        else:
+            consecutive_count = 0
+
+    return count
+
+
+def Rx1day(daily_precip, **kwargs):
+    return np.max(daily_precip, **kwargs)
+
+
+def Rx5day(daily_precip, window=5, **kwargs):
+    # Ensure the input array is a numpy array
+    daily_precip = np.asarray(daily_precip)
+    # Check if the input array has the correct dimensions
+    if daily_precip.ndim != 3:
+        raise ValueError("Input data must be a 3D array with dimensions (time, lat, lon)")
+    # Calculate the rolling sum of precipitation over a 5-day window
+    rolling_precip_sum = np.apply_along_axis(lambda x: np.convolve(x, np.ones(window), mode='valid'), axis=0,
+                                             arr=daily_precip)
+    # Find the maximum value of the rolling sum along the specified axis
+    max_5day_precip = np.max(rolling_precip_sum, **kwargs)
+    return max_5day_precip
+
+
+def calculate_sdii(data, threshold=1.0, **kwargs):
+    # Step 1: Identify wet days (days with precipitation >= threshold)
+    wet_days = np.sum(data > threshold, **kwargs)
+
+    # Step 2: Calculate the number of wet days
+    W = len(wet_days)  # Number of wet days
+
+    if W == 0:
+        return 0  # No wet days, return 0
+
+    # Step 3: Calculate SDII
+    SDII = wet_days / W
+
+    return SDII
+
+
+def count_days_prcp_ge_10mm(data, axis=0, **kwargs):
+    return np.sum(data >= 10, axis=axis)
+
+
+def count_days_prcp_ge_20mm(data, axis=0, **kwargs):
+    return np.sum(data >= 20, axis=axis)
+
+
+def count_days_prcp_ge_nnmm(data, threshold, axis=0, **kwargs):
+    return np.sum(data >= threshold, axis=axis)
+
+
+def max_dry_spell_length(data, threshold=1.0, axis=None):
+    if axis is None:
+        # No specific axis provided, handle as 1D data
+        return max_length_of_dry_spell(data, threshold)
+    elif axis == 0:
+        # Axis 0: calculate for each column (time series for multiple locations)
+        return np.apply_along_axis(max_length_of_dry_spell, 0, data, threshold)
+    elif axis == 1:
+        # Axis 1: calculate for each row (e.g., different time series)
+        return np.apply_along_axis(max_length_of_dry_spell, 1, data, threshold)
+    else:
+        raise ValueError("Invalid axis. Axis must be None, 0, or 1.")
+
+
+def max_length_of_dry_spell(data, threshold=1, **kwargs):
+    consecutive_days = 0
+    max_consecutive_days = 0
+
+    for value in data:
+        if value < threshold:
+            consecutive_days += 1
+            max_consecutive_days = max(max_consecutive_days, consecutive_days)
+        else:
+            consecutive_days = 0
+
+    return max_consecutive_days
+
+
+def max_wet_spell_length(data, threshold=1.0, axis=None):
+    if axis is None:
+        # No specific axis provided, handle as 1D data
+        return _max_consecutive_days_above_threshold(data, threshold)
+    elif axis == 0:
+        # Axis 0: calculate for each column (time series for multiple locations)
+        return np.apply_along_axis(_max_consecutive_days_above_threshold, 0, data, threshold)
+    elif axis == 1:
+        # Axis 1: calculate for each row (e.g., different time series)
+        return np.apply_along_axis(_max_consecutive_days_above_threshold, 1, data, threshold)
+    else:
+        raise ValueError("Invalid axis. Axis must be None, 0, or 1.")
+
+
+def _max_consecutive_days_above_threshold(data, threshold):
+    max_length = 0
+    current_length = 0
+
+    for value in data:
+        if value >= threshold:
+            current_length += 1
+            max_length = max(max_length, current_length)
+        else:
+            current_length = 0
+
+    return max_length
+
+
+def annual_total_precipitation_when_rr_above_95th_percentile(data, threshold=1.0, axis=None):
+    # Calculate the 95th percentile threshold for wet days in the reference period
+    wet_days = data[data >= threshold]
+    percentile_95th = np.percentile(wet_days, 95)
+
+    if axis is None:
+        # No specific axis provided, handle as 1D data
+        return _total_precipitation_above_threshold(data, percentile_95th, threshold)
+    elif axis == 0:
+        # Axis 0: calculate for each column (time series for multiple locations)
+        return np.apply_along_axis(_total_precipitation_above_threshold, 0, data, percentile_95th, threshold)
+    elif axis == 1:
+        # Axis 1: calculate for each row (e.g., different time series)
+        return np.apply_along_axis(_total_precipitation_above_threshold, 1, data, percentile_95th, threshold)
+    else:
+        raise ValueError("Invalid axis. Axis must be None, 0, or 1.")
+
+
+def _total_precipitation_above_threshold(data, percentile_95th, threshold):
+    total_precipitation = 0
+
+    for value in data:
+        if value >= threshold and value > percentile_95th:
+            total_precipitation += value
+
+    return total_precipitation
+
+
+def annual_total_precipitation_when_rr_above_99th_percentile(data, threshold=1.0, axis=None):
+    # Calculate the 95th percentile threshold for wet days in the reference period
+    wet_days = data[data >= threshold]
+    percentile_99th = np.percentile(wet_days, 99)
+
+    if axis is None:
+        # No specific axis provided, handle as 1D data
+        return _total_precipitation_above_threshold(data, percentile_99th, threshold)
+    elif axis == 0:
+        # Axis 0: calculate for each column (time series for multiple locations)
+        return np.apply_along_axis(_total_precipitation_above_threshold, 0, data, percentile_99th, threshold)
+    elif axis == 1:
+        # Axis 1: calculate for each row (e.g., different time series)
+        return np.apply_along_axis(_total_precipitation_above_threshold, 1, data, percentile_99th, threshold)
+    else:
+        raise ValueError("Invalid axis. Axis must be None, 0, or 1.")
+
+
+def _total_precipitation_above_threshold(data, percentile_99th, threshold):
+    total_precipitation = 0
+
+    for value in data:
+        if value >= threshold and value > percentile_99th:
+            total_precipitation += value
+
+    return total_precipitation
+
+
+def annual_total_precipitation_on_wet_days(data, threshold=1.0, **kwargs):
+    # Sum the daily precipitation amounts along the time axis
+    total_precipitation = np.sum(data >= threshold, **kwargs)
+
+    return total_precipitation
+
+
+def contribution_from_very_wet_days_R95pTOT(data, threshold=1.0, axis=None):
+    # Calculate R95p (annual total precipitation when RR above 95th percentile)
+    R95p = annual_total_precipitation_when_rr_above_95th_percentile(data, threshold=threshold, axis=axis)
+
+    # Calculate PRCPTOT (annual total precipitation on wet days)
+    PRCPTOT = annual_total_precipitation_on_wet_days(data, threshold=threshold, axis=axis)
+
+    # Calculate R95pTOT (% contribution to total precipitation from very wet days)
+    R95pTOT = (R95p / PRCPTOT) * 100
+
+    return R95pTOT
+
+
+def contribution_from_very_wet_days_R99pTOT(data, threshold=1.0, axis=None):
+    # Calculate R95p (annual total precipitation when RR above 95th percentile)
+    R99p = annual_total_precipitation_when_rr_above_99th_percentile(data, threshold=threshold, axis=axis)
+
+    # Calculate PRCPTOT (annual total precipitation on wet days)
+    PRCPTOT = annual_total_precipitation_on_wet_days(data, threshold=threshold, axis=axis)
+
+    # Calculate R95pTOT (% contribution to total precipitation from very wet days)
+    R99pTOT = (R99p / PRCPTOT) * 100
+
+    return R99pTOT
+
+
+def calculate_DTR(data, **kwargs):
+    # Check if TX and TN are present in the data
+    if 'TX' in data:
+        TX = data['TX']
+    else:
+        TX = np.random.random((121, 115, 229)) * 50  # Generate random data if not present
+
+    if 'TN' in data:
+        TN = data['TN']
+    else:
+        TN = np.random.random((121, 115, 229)) * 100  # Generate random data if not present
+
+    # Ensure the shapes of TX and TN match
+    if TX.shape != TN.shape:
+        raise ValueError("Shapes of TX and TN must match.")
+
+    # Calculate the Daily Temperature Range (DTR)
+    DTR = np.mean(TX - TN, **kwargs)
+    return DTR
+
+
+def calculate_ETR(data, **kwargs):
+    # Check if TX and TN are present in the data
+    # Check if TX and TN are present in the data
+    if 'TX' in data:
+        TX = data['TX']
+    else:
+        TX = np.random.random((121, 115, 229))  # Generate random data if not present
+
+    if 'TN' in data:
+        TN = data['TN']
+    else:
+        TN = np.random.random((121, 115, 229))  # Generate random data if not present
+
+    # Ensure the shapes of TX and TN match
+    if TX.shape != TN.shape:
+        raise ValueError("Shapes of TX and TN must match.")
+
+    # Calculate the Extreme Temperature Range (ETR) for each month
+    ETR = np.sum(TX - TN, **kwargs)  # Calculate maximum TX and minimum TN for each month
+
+    return ETR
 # Index function dispatcher
-def index_function_by_name(index_name, data, **kwargs):
+def index_function_by_name(index_name, data, threshold=None, base_period=None, **kwargs):
+    # take min temperature
     if index_name == 'FD':
         return count_frost_days(data, **kwargs)
+    elif index_name == 'TR':
+        return count_tropical_nights(data, **kwargs)
+    elif index_name == 'TNx':
+        return max_daily_min_temp(data, **kwargs)
+    elif index_name == 'TNn':
+        return min_daily_min_temp(data, **kwargs)
+    elif index_name == 'TN10p':
+        return count_cold_nights(data, **kwargs)
+    elif index_name == 'TN90p':
+        return TN90p(data, **kwargs)
+    elif index_name == 'TNm':
+        return calculate_TNm(data, **kwargs)
+    elif index_name == 'TNlt2':
+        return count_tn_lt_2(data, **kwargs)
+    elif index_name == 'TNltm2':
+        return count_tn_lt_minus_2(data, **kwargs)
+    elif index_name == 'TNltm20':
+        return count_tn_lt_minus_20(data, **kwargs)
+
+    # take max temperature
     elif index_name == 'SU':
         return count_summer_days(data, **kwargs)
     elif index_name == 'ID':
         return count_icing_days(data, **kwargs)
-    elif index_name == 'TR':
-        return count_tropical_nights(data, **kwargs)
     elif index_name == 'TXx':
         return max_daily_max_temp(data, **kwargs)
-    elif index_name == 'TNx':
-        return max_daily_min_temp(data, **kwargs)
     elif index_name == 'TXn':
         return min_daily_max_temp(data, **kwargs)
-    elif index_name == 'TNn':
-        return min_daily_min_temp(data, **kwargs)
+    elif index_name == 'TXm':
+        return calculate_TXm(data, **kwargs)
+    elif index_name == 'TX90p':
+        return count_warm_days(data, **kwargs)
+    elif index_name == 'TX10p':
+        return TX10p(data, **kwargs)
+    elif index_name == 'TXge30':
+        return count_tx_ge_30(data, **kwargs)
+    elif index_name == 'TXge35':
+        return count_tx_ge_35(data, **kwargs)
+    elif index_name == 'TXgt50p':
+        return percentage_days_gt_50p(data, **kwargs)
+    elif index_name == 'Rx1day':
+        return Rx1day(data, **kwargs)
+    elif index_name == 'Rx5day':
+        return Rx5day(data, **kwargs)
+    elif index_name == 'WSDI':
+        return calculate_90th_percentile(data, base_period=base_period, **kwargs)
+
+
+    # take mran  temperature
     elif index_name == 'GSL':
         return count_growing_season_length(data, **kwargs)
     elif index_name == 'HDD':
         return count_heating_degree_days(data, **kwargs)
     elif index_name == 'CDD':
         return count_cooling_degree_days(data, **kwargs)
-    elif index_name == 'TX90p':
-        return count_warm_days(data, **kwargs)
-    elif index_name == 'TN90p':
-        return TN90p(data, **kwargs)
-    elif index_name == 'TX10p':
-        return TX10p(data, **kwargs)
-    elif index_name == 'TN10p':
-        return count_cold_nights(data, **kwargs)
+    elif index_name == 'Gdd':
+        return calculate_gdd(data, 10, **kwargs)
+    elif index_name == 'TMm':
+        return calculate_TMm(data, **kwargs)
+    elif index_name == 'TMge5':
+        return count_tm_ge_5(data, **kwargs)
+    elif index_name == 'TMlt5':
+        return count_TM_lt_5(data, **kwargs)
+    elif index_name == 'TMge10':
+        return count_tm_ge_10(data, **kwargs)
+    elif index_name == 'TMlt10':
+        return count_TM_lt_10(data, **kwargs)
+
+
+
+    # take min,max precipitation
+
+    elif index_name == 'ETR':
+        return calculate_ETR(data, **kwargs)
+    elif index_name == 'DTR':
+        return calculate_DTR(data, **kwargs)
+    elif index_name == 'TXbdTNbd':
+        return TXbdTNbd(data, threshold=threshold, **kwargs)
+
+
+
+    # take the precipitation
+    elif index_name == 'SDII':
+        return calculate_sdii(data, threshold=threshold, **kwargs)
+    elif index_name == 'R10mm':
+        return count_days_prcp_ge_10mm(data, **kwargs)
+    elif index_name == 'R20mm':
+        return count_days_prcp_ge_20mm(data, **kwargs)
+    elif index_name == 'Rnnmm':
+        if threshold is None:
+            raise ValueError("A threshold value must be provided for the 'Rnnmm' index.")
+        return count_days_prcp_ge_nnmm(data, threshold, **kwargs)
+    elif index_name == 'CDD':
+        return max_dry_spell_length(data, **kwargs)
+    elif index_name == 'CWD':
+        return max_wet_spell_length(data, **kwargs)  # Add the new index condition here
+    elif index_name == 'R95p':
+        return annual_total_precipitation_when_rr_above_95th_percentile(data, threshold=threshold, **kwargs)
+    elif index_name == 'R99p':
+        return annual_total_precipitation_when_rr_above_99th_percentile(data, threshold=threshold, **kwargs)
+    elif index_name == 'PRCPTOT':
+        return annual_total_precipitation_on_wet_days(data, threshold=threshold, **kwargs)
+    elif index_name == 'R95pTOT':
+        return contribution_from_very_wet_days_R95pTOT(data, threshold=threshold, **kwargs)
+    elif index_name == 'R99pTOT':
+        return contribution_from_very_wet_days_R99pTOT(data, threshold=threshold, **kwargs)
     else:
         raise ValueError(f"Unknown index name: {index_name}")
 
@@ -574,8 +1078,8 @@ def filter_data_by_season_and_year(data, time_variable, season, start_year, end_
 
 def plot_time_custom_function_with_dates(file_path, variable_name, start_date=None, end_date=None,
                                          start_year=None, end_year=None, season='annual',
-                                         index_name='TXx', data_type='temp', lon1=None, lat1=None,
-                                         lon3=None, lat3=None):
+                                         index_name='TXx', threshold=20, base_period=None,
+                                         data_type='temp', lon1=None, lat1=None, lon3=None, lat3=None):
     dataset = nc.Dataset(file_path)
     try:
         xlon = dataset.variables['xlon'][:]
@@ -613,9 +1117,9 @@ def plot_time_custom_function_with_dates(file_path, variable_name, start_date=No
 
             # Aggregate data along the time axis (assuming the time axis is the first dimension)
             if len(sliced_data.shape) == 3:
-                aggregated_data = index_function_by_name(index_name, sliced_data, axis=0)
+                aggregated_data = index_function_by_name(index_name, sliced_data, axis=0, threshold=threshold, base_period=base_period)
             else:
-                aggregated_data = index_function_by_name(index_name, sliced_data, axis=0)
+                aggregated_data = index_function_by_name(index_name, sliced_data, axis=0, threshold=threshold, base_period=base_period)
         else:
             raise ValueError("Unsupported data shape. Expected 2D or 3D+ data.")
 
@@ -750,23 +1254,67 @@ def plot_firebase_endpoint():
 
 @app.route('/add_sector', methods=['POST'])
 def add_sector_to_firebase():
+    # sectors: { sector_name: { indexes: [index1, index2, ...], sector_name } }
     try:
         # Get data from the request
         data = request.get_json()
         # Extract parameters from the data
-        sector = data.get('sector')
+        sector_name = data.get('sector_name')
         indexes = data.get('indexes')
 
         sector_data = {
-            'sector_name': sector,
+            'sector_name': sector_name,
             'indexes': indexes
         }
-        ref = db.reference(f'sectors/{sector}')
+        ref = db.reference(f'sectors/{sector_name}')
         ref.set(sector_data)
 
         return jsonify({"message": "Sector added successfully"}), 200
     except FirebaseError as e:
-        error_message = f'Error updating dataset: {str(e)}'
+        error_message = f'Error adding sector: {str(e)}'
+        return jsonify({'error': error_message}), 500
+
+@app.route('/add_index', methods=['POST'])
+def add_index_to_firebase():
+    # sectors: { sector_name: { indexes: [index1, index2, ...], sector_name } }
+    # index: { index_name, index_description, sector_name, high_index_indication,
+    # low_index_indication, has_base_period, has_threshold, base_period, threshold
+    # moderate_range }
+    try:
+        # Get data from the request
+        data = request.get_json()
+        # Extract parameters from the data
+        index_code = data.get('index_code')
+        index_name = data.get('index_name')
+        index_description = data.get('index_description')
+        sector_name = data.get('sector_name')
+        high_index_indication = data.get('high_index_indication')
+        low_index_indication = data.get('low_index_indication')
+        has_base_period = data.get('has_base_period')
+        has_threshold = data.get('has_threshold')
+        base_period = data.get('base_period')
+        threshold = data.get('threshold')
+        moderate_range = data.get('moderate_range')
+
+        index_data = {
+            'index_code': index_code,
+            'index_name': index_name,
+            'index_description': index_description,
+            'sector_name': sector_name,
+            'high_index_indication': high_index_indication,
+            'low_index_indication': low_index_indication,
+            'has_base_period': has_base_period,
+            'has_threshold': has_threshold,
+            'base_period': base_period,
+            'threshold': threshold,
+            'moderate_range': moderate_range,
+        }
+        ref = db.reference(f'sectors/{sector_name}/indexes/{index_code}')
+        ref.set(index_data)
+
+        return jsonify({"message": "Index added successfully"}), 200
+    except FirebaseError as e:
+        error_message = f'Error adding index: {str(e)}'
         return jsonify({'error': error_message}), 500
 
 if __name__ == "__main__":

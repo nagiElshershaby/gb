@@ -927,6 +927,120 @@
     50,
     100
   ]
+},
+
+
+
+
+
+
+
+
+
+
+
+
+
+  "10:WSDI":{
+  "index_code": "WSDI",
+  "index_name": "Warm spell duration index: annual count of days with at least 6 consecutive days when TX > 90th percentile",
+  "index_description": "Let TXij be the daily maximum temperature on day i in period j and let TXin90 be the calendar day 90th percentile centred on a 5-day window for the base period 1961-1990. Then the number of days per period is summed where, in intervals of at least 6 consecutive days, TXij > TXin90.",
+  "sector_name": "Agriculture",
+  "low_index_indication": "Positive Effects: Reduced heat stress on crops, lower irrigation needs.\nNegative Effects: Shorter growing seasons for heat-loving crops.",
+  "high_index_indication": "Positive Effects: Extended growing seasons, improved growth for heat-loving crops.\nNegative Effects: Increased heat stress on crops, higher water demand for irrigation.",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"10:WSDI":{
+  "index_code": "WSDI",
+  "index_name": "Warm spell duration index: annual count of days with at least 6 consecutive days when TX > 90th percentile",
+  "index_description": "Let TXij be the daily maximum temperature on day i in period j and let TXin90 be the calendar day 90th percentile centred on a 5-day window for the base period 1961-1990. Then the number of days per period is summed where, in intervals of at least 6 consecutive days, TXij > TXin90.",
+  "sector_name": "Water_Resources",
+  "low_index_indication": "Positive Effects: Reduced evaporation rates, more stable water supplies.\nNegative Effects: Increased risk of frozen pipes, higher maintenance costs for water infrastructure.",
+  "high_index_indication": "Positive Effects: Reduced risk of frozen pipes, lower maintenance costs for water infrastructure.\nNegative Effects: Increased evaporation rates, higher demand for irrigation water.",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"10:WSDI":{
+  "index_code": "WSDI",
+  "index_name": "Warm spell duration index: annual count of days with at least 6 consecutive days when TX > 90th percentile",
+  "index_description": "Let TXij be the daily maximum temperature on day i in period j and let TXin90 be the calendar day 90th percentile centred on a 5-day window for the base period 1961-1990. Then the number of days per period is summed where, in intervals of at least 6 consecutive days, TXij > TXin90.",
+  "sector_name": "Energy",
+  "low_index_indication": "Positive Effects: Reduced cooling demand, lower energy costs in summer.\nNegative Effects: Increased heating demand, higher energy costs in winter.",
+  "high_index_indication": "Positive Effects: Reduced heating demand, lower energy costs in winter.\nNegative Effects: Increased cooling demand, higher energy costs in summer.",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"10:WSDI":{
+  "index_code": "WSDI",
+  "index_name": "Warm spell duration index: annual count of days with at least 6 consecutive days when TX > 90th percentile",
+  "index_description": "Let TXij be the daily maximum temperature on day i in period j and let TXin90 be the calendar day 90th percentile centred on a 5-day window for the base period 1961-1990. Then the number of days per period is summed where, in intervals of at least 6 consecutive days, TXij > TXin90.",
+  "sector_name": "Health",
+  "low_index_indication": "Positive Effects: Reduced incidence of heat-related illnesses.\nNegative Effects: Increased risk of cold-related health issues.",
+  "high_index_indication": "Positive Effects: Reduced incidence of cold-related health issues.\nNegative Effects: Increased risk of heat-related illnesses, higher healthcare costs.",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"10:WSDI":{
+  "index_code": "WSDI",
+  "index_name": "Warm spell duration index: annual count of days with at least 6 consecutive days when TX > 90th percentile",
+  "index_description": "Let TXij be the daily maximum temperature on day i in period j and let TXin90 be the calendar day 90th percentile centred on a 5-day window for the base period 1961-1990. Then the number of days per period is summed where, in intervals of at least 6 consecutive days, TXij > TXin90.",
+  "sector_name": "Ecosystems_and_Biodiversity",
+  "low_index_indication": "Positive Effects: Maintenance of traditional ecological balances.\nNegative Effects: Stress on species not adapted to cooler conditions, potential loss of biodiversity.",
+  "high_index_indication": "Positive Effects: Extended growing seasons, potential for species expansion.\nNegative Effects: Disruption of ecological balances, increased competition from invasive species.",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"10:WSDI":{
+  "index_code": "WSDI",
+  "index_name": "Warm spell duration index: annual count of days with at least 6 consecutive days when TX > 90th percentile",
+  "index_description": "Let TXij be the daily maximum temperature on day i in period j and let TXin90 be the calendar day 90th percentile centred on a 5-day window for the base period 1961-1990. Then the number of days per period is summed where, in intervals of at least 6 consecutive days, TXij > TXin90.",
+  "sector_name": "Infrastructure_and_Urban_Areas",
+  "low_index_indication": "Positive Effects: Reduced cooling costs, less wear on cooling systems.\nNegative Effects: Increased heating costs, higher risk of freeze-thaw damage to infrastructure.",
+  "high_index_indication": "Positive Effects: Reduced heating costs, less need for winter maintenance.\nNegative Effects: Increased wear on cooling systems, higher cooling costs.",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
 }
 
 

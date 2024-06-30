@@ -1317,6 +1317,58 @@ def add_index_to_firebase():
         error_message = f'Error adding index: {str(e)}'
         return jsonify({'error': error_message}), 500
 
+
+@app.route('/edit_index/<sector_name>/<index_code>', methods=['PUT'])
+def edit_index_in_firebase(sector_name, index_code):
+    try:
+        data = request.get_json()
+        ref = db.reference(f'sectors/{sector_name}/indexes/{index_code}')
+
+        # Check if the index exists
+        if not ref.get():
+            return jsonify({"error": "Index not found"}), 404
+
+        # Update index data
+        ref.update(data)
+        return jsonify({"message": "Index updated successfully"}), 200
+    except FirebaseError as e:
+        error_message = f'Error updating index: {str(e)}'
+        return jsonify({'error': error_message}), 500
+
+
+@app.route('/sectors', methods=['GET'])
+def get_all_sectors():
+    try:
+        ref = db.reference('sectors')
+        sectors = ref.get()
+        if not sectors:
+            return jsonify({"error": "No sectors found"}), 404
+        return jsonify(sectors), 200
+    except FirebaseError as e:
+        error_message = f'Error retrieving sectors: {str(e)}'
+        return jsonify({'error': error_message}), 500
+
+
+@app.route('/indexes', methods=['GET'])
+def get_all_indexes():
+    try:
+        ref = db.reference('sectors')
+        sectors = ref.get()
+        all_indexes = {}
+
+        if not sectors:
+            return jsonify({"error": "No indexes found"}), 404
+
+        for sector_name, sector_data in sectors.items():
+            indexes = sector_data.get('indexes', {})
+            all_indexes[sector_name] = indexes
+
+        return jsonify(all_indexes), 200
+    except FirebaseError as e:
+        error_message = f'Error retrieving indexes: {str(e)}'
+        return jsonify({'error': error_message}), 500
+
+
 if __name__ == "__main__":
     app.run(debug=True)
 

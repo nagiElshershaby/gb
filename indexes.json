@@ -1,101 +1,11 @@
 {
-"fd":{
-  "index_code": "FD",
-  "index_name": "Number of frost days",
-  "index_description": "Annual count of days when TN (daily minimum temperature) < 0°C. Let TNij be daily minimum temperature on day i in year j. Count the number of days where TNij < 0 °C.",
-  "sector_name": "Water_Resources",
-  "low_index_indication": "Positive Effects: Reduced risk of frozen pipes and infrastructure damage, less need for winter maintenance.\nNegative Effects: Potential reduction in snowpack, which can affect water supply in regions dependent on snowmelt.",
-  "high_index_indication": "Positive Effects: Increased snowpack, which can improve water supply in the spring and summer.\nNegative Effects: Increased risk of frozen water pipes and infrastructure damage, higher maintenance costs.",
-  "has_base_period": false,
-  "has_threshold": false,
-  "base_period": [],
-  "threshold": 0,
-  "moderate_range": [
-    50,
-    100
-  ]
-},
-
-"fd":{
-  "index_code": "FD",
-  "index_name": "Number of frost days",
-  "index_description": "Annual count of days when TN (daily minimum temperature) < 0°C. Let TNij be daily minimum temperature on day i in year j. Count the number of days where TNij < 0 °C.",
-  "sector_name": "Energy",
-  "low_index_indication": "Positive Effects: Lower heating demand and energy costs during winter.\nNegative Effects: Reduced efficiency of some renewable energy sources, such as hydropower, if reduced snowpack leads to lower river flows.",
-  "high_index_indication": "Positive Effects: Consistent cold temperatures may improve the efficiency of certain cooling processes in industrial settings.\nNegative Effects: Higher heating demand and energy costs, potential strain on energy supply systems.",
-  "has_base_period": false,
-  "has_threshold": false,
-  "base_period": [],
-  "threshold": 0,
-  "moderate_range": [
-    50,
-    100
-  ]
-},
-
-"fd":{
-  "index_code": "FD",
-  "index_name": "Number of frost days",
-  "index_description": "Annual count of days when TN (daily minimum temperature) < 0°C. Let TNij be daily minimum temperature on day i in year j. Count the number of days where TNij < 0 °C.",
-  "sector_name": "Health",
-  "low_index_indication": "Positive Effects: Reduced incidence of cold-related health issues, such as hypothermia and frostbite.\nNegative Effects: Potential increase in vector-borne diseases if pests like mosquitoes survive milder winters.",
-  "high_index_indication": "Positive Effects: Natural reduction in pest populations, potentially reducing the incidence of vector-borne diseases.\nNegative Effects: Increased incidence of cold-related health issues, higher healthcare costs related to cold weather.",
-  "has_base_period": false,
-  "has_threshold": false,
-  "base_period": [],
-  "threshold": 0,
-  "moderate_range": [
-    50,
-    100
-  ]
-},
-
-"fd":{
-  "index_code": "FD",
-  "index_name": "Number of frost days",
-  "index_description": "Annual count of days when TN (daily minimum temperature) < 0°C. Let TNij be daily minimum temperature on day i in year j. Count the number of days where TNij < 0 °C.",
-  "sector_name": "Ecosystems_and_Biodiversity",
-  "low_index_indication": "Positive Effects: Extended growing seasons for plants, potential for species expansion into new areas.\nNegative Effects: Disruption of ecological balances, increased competition from invasive species, altered phenology of plants and animals.",
-  "high_index_indication": "Positive Effects: Maintenance of traditional ecological balances and phenological cycles.\nNegative Effects: Stress on species not adapted to prolonged cold, potential loss of biodiversity.",
-  "has_base_period": false,
-  "has_threshold": false,
-  "base_period": [],
-  "threshold": 0,
-  "moderate_range": [
-    50,
-    100
-  ]
-},
-
-"fd":{
-  "index_code": "FD",
-  "index_name": "Number of frost days",
-  "index_description": "Annual count of days when TN (daily minimum temperature) < 0°C. Let TNij be daily minimum temperature on day i in year j. Count the number of days where TNij < 0 °C.",
-  "sector_name": "Infrastructure_and_Urban_Areas",
-  "low_index_indication": "Positive Effects: Reduced need for winter maintenance of roads and infrastructure, lower costs for snow and ice removal.\nNegative Effects: Potential for increased weathering and deterioration of infrastructure not designed for milder conditions.",
-  "high_index_indication": "Positive Effects: Opportunities for winter tourism activities, such as ice festivals and winter sports.\nNegative Effects: Increased maintenance costs, higher risk of infrastructure damage from freeze-thaw cycles.",
-  "has_base_period": false,
-  "has_threshold": false,
-  "base_period": [],
-  "threshold": 0,
-  "moderate_range": [
-    50,
-    100
-  ]
-},
-
-
-
-
-
-
-"su":{
-  "index_code": "SU",
-  "index_name": "Number of summer days",
-  "index_description": "Annual count of days when TX (daily maximum temperature) > 25°C. Let TXij be daily minimum temperature on day i in year j. Count the number of days where TXij > 25 °C.",
+  "14:CDDcoldn":{
+  "index_code": "CDDcoldn",
+  "index_name": "Cooling degree days",
+  "index_description": "Annual sum of TM - n, where n is a user-defined, location-specific base temperature and TM > n. A measure of the energy demand needed to cool a building.",
   "sector_name": "Agriculture",
-  "low_index_indication": "Positive Effects: Reduced heat stress on crops, more stable yields for crops sensitive to high temperatures.\nNegative Effects: Shortened growing seasons for heat-loving crops, potential reduction in crop varieties that require warmer temperatures.",
-  "high_index_indication": "Positive Effects: Extended growing season for heat-loving crops, potential increase in crop varieties.\nNegative Effects: Increased heat stress on crops, potential yield loss, and higher irrigation needs.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -106,13 +16,13 @@
   ]
 },
 
-"su":{
-  "index_code": "SU",
-  "index_name": "Number of summer days",
-  "index_description": "Annual count of days when TX (daily maximum temperature) > 25°C. Let TXij be daily minimum temperature on day i in year j. Count the number of days where TXij > 25 °C.",
+"14:CDDcoldn":{
+  "index_code": "CDDcoldn",
+  "index_name": "Cooling degree days",
+  "index_description": "Annual sum of TM - n, where n is a user-defined, location-specific base temperature and TM > n. A measure of the energy demand needed to cool a building.",
   "sector_name": "Water_Resources",
-  "low_index_indication": "Positive Effects: Lower evaporation rates, more stable water supplies, reduced irrigation needs.\nNegative Effects: Potentially reduced demand for water, which may affect water management infrastructure.",
-  "high_index_indication": "Positive Effects: Better utilization of water management infrastructure.\nNegative Effects: Higher evaporation rates, potential for water shortages, increased demand for irrigation.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -123,13 +33,13 @@
   ]
 },
 
-"su":{
-  "index_code": "SU",
-  "index_name": "Number of summer days",
-  "index_description": "Annual count of days when TX (daily maximum temperature) > 25°C. Let TXij be daily minimum temperature on day i in year j. Count the number of days where TXij > 25 °C.",
+"14:CDDcoldn":{
+  "index_code": "CDDcoldn",
+  "index_name": "Cooling degree days",
+  "index_description": "Annual sum of TM - n, where n is a user-defined, location-specific base temperature and TM > n. A measure of the energy demand needed to cool a building.",
   "sector_name": "Energy",
-  "low_index_indication": "Positive Effects: Reduced demand for air conditioning, lower energy costs, reduced strain on power grids.\nNegative Effects: Lower electricity consumption could impact energy production economics.",
-  "high_index_indication": "Positive Effects: Increased demand for air conditioning could benefit the energy sector economically.\nNegative Effects: Higher energy costs, increased strain on power grids, potential for blackouts.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -140,13 +50,13 @@
   ]
 },
 
-"su":{
-  "index_code": "SU",
-  "index_name": "Number of summer days",
-  "index_description": "Annual count of days when TX (daily maximum temperature) > 25°C. Let TXij be daily minimum temperature on day i in year j. Count the number of days where TXij > 25 °C.",
+"14:CDDcoldn":{
+  "index_code": "CDDcoldn",
+  "index_name": "Cooling degree days",
+  "index_description": "Annual sum of TM - n, where n is a user-defined, location-specific base temperature and TM > n. A measure of the energy demand needed to cool a building.",
   "sector_name": "Health",
-  "low_index_indication": "Positive Effects: Fewer heat-related illnesses and deaths, better sleep quality, overall improved public health.\nNegative Effects: Less opportunity for outdoor activities, potentially affecting mental health and well-being.",
-  "high_index_indication": "Positive Effects: More opportunities for outdoor activities, potentially improving mental health.\nNegative Effects: Higher incidence of heat-related illnesses and deaths, increased healthcare costs, disrupted sleep patterns.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -157,13 +67,13 @@
   ]
 },
 
-"su":{
-  "index_code": "SU",
-  "index_name": "Number of summer days",
-  "index_description": "Annual count of days when TX (daily maximum temperature) > 25°C. Let TXij be daily minimum temperature on day i in year j. Count the number of days where TXij > 25 °C.",
+"14:CDDcoldn":{
+  "index_code": "CDDcoldn",
+  "index_name": "Cooling degree days",
+  "index_description": "Annual sum of TM - n, where n is a user-defined, location-specific base temperature and TM > n. A measure of the energy demand needed to cool a building.",
   "sector_name": "Ecosystems_and_Biodiversity",
-  "low_index_indication": "Positive Effects: Less stress on temperature-sensitive species, more stable ecosystems.\nNegative Effects: Species adapted to warmer climates may struggle or shift their range.",
-  "high_index_indication": "Positive Effects: Some heat-tolerant species may thrive.\nNegative Effects: Stress on temperature-sensitive species, potential shifts in species distributions, increased risk of wildfires.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -174,13 +84,13 @@
   ]
 },
 
-"su":{
-  "index_code": "SU",
-  "index_name": "Number of summer days",
-  "index_description": "Annual count of days when TX (daily maximum temperature) > 25°C. Let TXij be daily minimum temperature on day i in year j. Count the number of days where TXij > 25 °C.",
+"14:CDDcoldn":{
+  "index_code": "CDDcoldn",
+  "index_name": "Cooling degree days",
+  "index_description": "Annual sum of TM - n, where n is a user-defined, location-specific base temperature and TM > n. A measure of the energy demand needed to cool a building.",
   "sector_name": "Infrastructure_and_Urban_Areas",
-  "low_index_indication": "Positive Effects: Reduced cooling costs for buildings, less wear on cooling systems.\nNegative Effects: Potential underutilization of cooling infrastructure, leading to inefficiencies.",
-  "high_index_indication": "Positive Effects: Better utilization of cooling infrastructure.\nNegative Effects: Higher cooling costs, increased wear on cooling systems, potential heat-related damage to infrastructure.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -194,13 +104,14 @@
 
 
 
-  "GSL":{
-  "index_code": "GSL",
-  "index_name": "Growing season length",
-  "index_description": "Annual* count between the first span of at least 6 days with daily mean temperature TG >5 °C and the first span after July 1st (Jan 1st in SH) of 6 days with TG <5 °C.\n\nLet TGij be daily mean temperature on day i in year j. Count the number of days between the first occurrence of at least 6 consecutive days with TGij > 5 °C and the first occurrence after 1st July (Jan 1st in SH) of at least 6 consecutive days with TGij < 5 °C.\n\n* Annual means Jan 1st to Dec 31st in the Northern Hemisphere (NH); July 1st to June 30th in the Southern Hemisphere (SH).",
+
+  "14:GDDgrown":{
+  "index_code": "GDDgrown",
+  "index_name": "Growing degree days",
+  "index_description": "Annual sum of TM - n, where n is a user-defined, location-specific base temperature and TM > n. A measure of the energy demand needed to cool a building.",
   "sector_name": "Agriculture",
-  "low_index_indication": "Positive Effects: Reduced time for pest and disease cycles, potential for fewer pest-related issues.\nNegative Effects: Reduced time for crop growth, lower yields, fewer harvests.",
-  "high_index_indication": "Positive Effects: Extended time for crop growth, higher yields, potential for additional harvests.\nNegative Effects: Increased risk of pest and disease outbreaks, higher irrigation needs.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -211,13 +122,13 @@
   ]
 },
 
-"GSL":{
-  "index_code": "GSL",
-  "index_name": "Growing season length",
-  "index_description": "Annual* count between the first span of at least 6 days with daily mean temperature TG >5 °C and the first span after July 1st (Jan 1st in SH) of 6 days with TG <5 °C.\n\nLet TGij be daily mean temperature on day i in year j. Count the number of days between the first occurrence of at least 6 consecutive days with TGij > 5 °C and the first occurrence after 1st July (Jan 1st in SH) of at least 6 consecutive days with TGij < 5 °C.\n\n* Annual means Jan 1st to Dec 31st in the Northern Hemisphere (NH); July 1st to June 30th in the Southern Hemisphere (SH).",
+"14:GDDgrown":{
+  "index_code": "GDDgrown",
+  "index_name": "Growing degree days",
+  "index_description": "Annual sum of TM - n, where n is a user-defined, location-specific base temperature and TM > n. A measure of the energy demand needed to cool a building.",
   "sector_name": "Water_Resources",
-  "low_index_indication": "Positive Effects: Potential reduction in water demand for irrigation.\nNegative Effects: None generally, unless the shortened season impacts water management.",
-  "high_index_indication": "Positive Effects: None generally, unless improved water management is in place.\nNegative Effects: Increased water demand for irrigation, potential for water shortages.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -228,13 +139,13 @@
   ]
 },
 
-"GSL":{
-  "index_code": "GSL",
-  "index_name": "Growing season length",
-  "index_description": "Annual* count between the first span of at least 6 days with daily mean temperature TG >5 °C and the first span after July 1st (Jan 1st in SH) of 6 days with TG <5 °C.\n\nLet TGij be daily mean temperature on day i in year j. Count the number of days between the first occurrence of at least 6 consecutive days with TGij > 5 °C and the first occurrence after 1st July (Jan 1st in SH) of at least 6 consecutive days with TGij < 5 °C.\n\n* Annual means Jan 1st to Dec 31st in the Northern Hemisphere (NH); July 1st to June 30th in the Southern Hemisphere (SH).",
+"14:GDDgrown":{
+  "index_code": "GDDgrown",
+  "index_name": "Growing degree days",
+  "index_description": "Annual sum of TM - n, where n is a user-defined, location-specific base temperature and TM > n. A measure of the energy demand needed to cool a building.",
   "sector_name": "Energy",
-  "low_index_indication": "Positive Effects: Lower overall energy demand for agricultural operations.\nNegative Effects: Potentially less energy production if agricultural biomass is used.",
-  "high_index_indication": "Positive Effects: Increased energy production if agricultural biomass is used.\nNegative Effects: Higher energy demand for irrigation and other agricultural operations.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -245,13 +156,13 @@
   ]
 },
 
-"GSL":{
-  "index_code": "GSL",
-  "index_name": "Growing season length",
-  "index_description": "Annual* count between the first span of at least 6 days with daily mean temperature TG >5 °C and the first span after July 1st (Jan 1st in SH) of 6 days with TG <5 °C.\n\nLet TGij be daily mean temperature on day i in year j. Count the number of days between the first occurrence of at least 6 consecutive days with TGij > 5 °C and the first occurrence after 1st July (Jan 1st in SH) of at least 6 consecutive days with TGij < 5 °C.\n\n* Annual means Jan 1st to Dec 31st in the Northern Hemisphere (NH); July 1st to June 30th in the Southern Hemisphere (SH).",
+"14:GDDgrown":{
+  "index_code": "GDDgrown",
+  "index_name": "Growing degree days",
+  "index_description": "Annual sum of TM - n, where n is a user-defined, location-specific base temperature and TM > n. A measure of the energy demand needed to cool a building.",
   "sector_name": "Health",
-  "low_index_indication": "Positive Effects: Potential reduction in vector-borne diseases due to shorter active periods for vectors.\nNegative Effects: None generally, unless reduced food supply impacts nutrition.",
-  "high_index_indication": "Positive Effects: Improved food security with longer growing seasons.\nNegative Effects: Increased risk of vector-borne diseases due to longer active periods for vectors.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -262,13 +173,13 @@
   ]
 },
 
-"GSL":{
-  "index_code": "GSL",
-  "index_name": "Growing season length",
-  "index_description": "Annual* count between the first span of at least 6 days with daily mean temperature TG >5 °C and the first span after July 1st (Jan 1st in SH) of 6 days with TG <5 °C.\n\nLet TGij be daily mean temperature on day i in year j. Count the number of days between the first occurrence of at least 6 consecutive days with TGij > 5 °C and the first occurrence after 1st July (Jan 1st in SH) of at least 6 consecutive days with TGij < 5 °C.\n\n* Annual means Jan 1st to Dec 31st in the Northern Hemisphere (NH); July 1st to June 30th in the Southern Hemisphere (SH).",
+"14:GDDgrown":{
+  "index_code": "GDDgrown",
+  "index_name": "Growing degree days",
+  "index_description": "Annual sum of TM - n, where n is a user-defined, location-specific base temperature and TM > n. A measure of the energy demand needed to cool a building.",
   "sector_name": "Ecosystems_and_Biodiversity",
-  "low_index_indication": "Positive Effects: Reduced stress on species sensitive to long growing seasons.\nNegative Effects: Potential disruption of ecosystems dependent on longer growing seasons.",
-  "high_index_indication": "Positive Effects: Potential expansion of species ranges.\nNegative Effects: Stress on species not adapted to longer growing seasons, potential shifts in ecosystem dynamics.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -279,13 +190,13 @@
   ]
 },
 
-"GSL":{
-  "index_code": "GSL",
-  "index_name": "Growing season length",
-  "index_description": "Annual* count between the first span of at least 6 days with daily mean temperature TG >5 °C and the first span after July 1st (Jan 1st in SH) of 6 days with TG <5 °C.\n\nLet TGij be daily mean temperature on day i in year j. Count the number of days between the first occurrence of at least 6 consecutive days with TGij > 5 °C and the first occurrence after 1st July (Jan 1st in SH) of at least 6 consecutive days with TGij < 5 °C.\n\n* Annual means Jan 1st to Dec 31st in the Northern Hemisphere (NH); July 1st to June 30th in the Southern Hemisphere (SH).",
+"14:GDDgrown":{
+  "index_code": "GDDgrown",
+  "index_name": "Growing degree days",
+  "index_description": "Annual sum of TM - n, where n is a user-defined, location-specific base temperature and TM > n. A measure of the energy demand needed to cool a building.",
   "sector_name": "Infrastructure_and_Urban_Areas",
-  "low_index_indication": "Positive Effects: None generally, unless specific to agricultural infrastructure.\nNegative Effects: Potential underutilization of agricultural infrastructure.",
-  "high_index_indication": "Positive Effects: Better utilization of agricultural infrastructure.\nNegative Effects: Increased maintenance needs due to extended use.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -299,13 +210,13 @@
 
 
 
-  "TR":{
-  "index_code": "TR",
-  "index_name": "Number of tropical nights",
-  "index_description": "Annual count of days when TN (daily minimum temperature) > 20 °C. Let TNij be daily minimum temperature on day i in year j. Count the number of days where TNij > 20 °C.",
+  "16:HDDheatn":{
+  "index_code": "HDDheatn",
+  "index_name": "Heating degree days",
+  "index_description": "Annual sum of n - TM, where n is a user-defined, location-specific base temperature and TM < n. A measure of the energy demand needed to heat a building.",
   "sector_name": "Agriculture",
-  "low_index_indication": "Positive Effects: Reduced heat stress on crops at night, potentially better plant recovery.\nNegative Effects: None generally, unless specific crops require warm nights.",
-  "high_index_indication": "Positive Effects: Improved growth for heat-loving crops.\nNegative Effects: Increased heat stress on crops, potential yield loss, higher irrigation needs.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -316,13 +227,13 @@
   ]
 },
 
-"TR":{
-  "index_code": "TR",
-  "index_name": "Number of tropical nights",
-  "index_description": "Annual count of days when TN (daily minimum temperature) > 20 °C. Let TNij be daily minimum temperature on day i in year j. Count the number of days where TNij > 20 °C.",
+"16:HDDheatn":{
+  "index_code": "HDDheatn",
+  "index_name": "Heating degree days",
+  "index_description": "Annual sum of n - TM, where n is a user-defined, location-specific base temperature and TM < n. A measure of the energy demand needed to heat a building.",
   "sector_name": "Water_Resources",
-  "low_index_indication": "Positive Effects: Lower evaporation rates, more stable water supplies.\nNegative Effects: None generally, unless specific water management issues arise.",
-  "high_index_indication": "Positive Effects: None generally, as high temperatures typically stress water resources.\nNegative Effects: Higher evaporation rates, potential for water shortages, increased demand for irrigation.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -333,13 +244,13 @@
   ]
 },
 
-"TR":{
-  "index_code": "TR",
-  "index_name": "Number of tropical nights",
-  "index_description": "Annual count of days when TN (daily minimum temperature) > 20 °C. Let TNij be daily minimum temperature on day i in year j. Count the number of days where TNij > 20 °C.",
+"16:HDDheatn":{
+  "index_code": "HDDheatn",
+  "index_name": "Heating degree days",
+  "index_description": "Annual sum of n - TM, where n is a user-defined, location-specific base temperature and TM < n. A measure of the energy demand needed to heat a building.",
   "sector_name": "Energy",
-  "low_index_indication": "Positive Effects: Reduced demand for nighttime cooling, lower energy costs.\nNegative Effects: None generally, unless energy consumption patterns are significantly affected.",
-  "high_index_indication": "Positive Effects: Economic benefits for energy providers due to increased demand.\nNegative Effects: Increased demand for nighttime cooling, higher energy costs, potential strain on power grids.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -350,13 +261,13 @@
   ]
 },
 
-"TR":{
-  "index_code": "TR",
-  "index_name": "Number of tropical nights",
-  "index_description": "Annual count of days when TN (daily minimum temperature) > 20 °C. Let TNij be daily minimum temperature on day i in year j. Count the number of days where TNij > 20 °C.",
+"16:HDDheatn":{
+  "index_code": "HDDheatn",
+  "index_name": "Heating degree days",
+  "index_description": "Annual sum of n - TM, where n is a user-defined, location-specific base temperature and TM < n. A measure of the energy demand needed to heat a building.",
   "sector_name": "Health",
-  "low_index_indication": "Positive Effects: Improved sleep quality, fewer heat-related health issues.\nNegative Effects: None generally, unless unusual night-time temperatures cause issues.",
-  "high_index_indication": "Positive Effects: None generally, as warm nights typically stress health systems.\nNegative Effects: Disrupted sleep patterns, higher incidence of heat-related illnesses.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -367,13 +278,13 @@
   ]
 },
 
-"TR":{
-  "index_code": "TR",
-  "index_name": "Number of tropical nights",
-  "index_description": "Annual count of days when TN (daily minimum temperature) > 20 °C. Let TNij be daily minimum temperature on day i in year j. Count the number of days where TNij > 20 °C.",
+"16:HDDheatn":{
+  "index_code": "HDDheatn",
+  "index_name": "Heating degree days",
+  "index_description": "Annual sum of n - TM, where n is a user-defined, location-specific base temperature and TM < n. A measure of the energy demand needed to heat a building.",
   "sector_name": "Ecosystems_and_Biodiversity",
-  "low_index_indication": "Positive Effects: Less stress on temperature-sensitive species.\nNegative Effects: None generally, unless specific nocturnal species are affected.",
-  "high_index_indication": "Positive Effects: Potential expansion of heat-tolerant species.\nNegative Effects: Stress on temperature-sensitive species, potential shifts in species distributions.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -384,13 +295,13 @@
   ]
 },
 
-"TR":{
-  "index_code": "TR",
-  "index_name": "Number of tropical nights",
-  "index_description": "Annual count of days when TN (daily minimum temperature) > 20 °C. Let TNij be daily minimum temperature on day i in year j. Count the number of days where TNij > 20 °C.",
+"16:HDDheatn":{
+  "index_code": "HDDheatn",
+  "index_name": "Heating degree days",
+  "index_description": "Annual sum of n - TM, where n is a user-defined, location-specific base temperature and TM < n. A measure of the energy demand needed to heat a building.",
   "sector_name": "Infrastructure_and_Urban_Areas",
-  "low_index_indication": "Positive Effects: Reduced cooling costs for buildings at night, less wear on cooling systems.\nNegative Effects: None generally, unless infrastructure is specifically affected by night-time temperatures.",
-  "high_index_indication": "Positive Effects: Opportunities for the design of heat-resistant infrastructure.\nNegative Effects: Higher cooling costs at night, increased wear on cooling systems, potential heat-related damage to infrastructure.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -403,13 +314,13 @@
 
 
 
-  "ID":{
-  "index_code": "ID",
-  "index_name": "Number of icing days",
-  "index_description": "Annual count of days when TX (daily maximum temperature) < 0 °C. Let TXijbe daily maximum temperature on day i in year j. Count the number of days where TXij < 0 °C.",
+  "17:TMge5":{
+  "index_code": "TMge5",
+  "index_name": "TM of greater than or equal to 5 °C",
+  "index_description": "Number of days when TM (daily mean temperature) ≥ 5 °C.",
   "sector_name": "Agriculture",
-  "low_index_indication": "Positive Effects: Extended growing seasons, reduced frost damage to crops.\nNegative Effects: Increased risk of pest and disease outbreaks due to milder winters.",
-  "high_index_indication": "Positive Effects: Natural control of pests and diseases due to harsh winter conditions.\nNegative Effects: Increased risk of frost damage to crops, reduced growing seasons.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -420,13 +331,13 @@
   ]
 },
 
-"ID":{
-  "index_code": "ID",
-  "index_name": "Number of icing days",
-  "index_description": "Annual count of days when TX (daily maximum temperature) < 0 °C. Let TXijbe daily maximum temperature on day i in year j. Count the number of days where TXij < 0 °C.",
+"17:TMge5":{
+  "index_code": "TMge5",
+  "index_name": "TM of greater than or equal to 5 °C",
+  "index_description": "Number of days when TM (daily mean temperature) ≥ 5 °C.",
   "sector_name": "Water_Resources",
-  "low_index_indication": "Positive Effects: Reduced risk of frozen pipes and infrastructure damage, less need for winter maintenance.\nNegative Effects: Potential reduction in snowpack, affecting water supply in regions dependent on snowmelt.",
-  "high_index_indication": "Positive Effects: Increased snowpack, improving water supply in the spring and summer.\nNegative Effects: Increased risk of frozen water pipes and infrastructure damage, higher maintenance costs.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -437,13 +348,13 @@
   ]
 },
 
-"ID":{
-  "index_code": "ID",
-  "index_name": "Number of icing days",
-  "index_description": "Annual count of days when TX (daily maximum temperature) < 0 °C. Let TXijbe daily maximum temperature on day i in year j. Count the number of days where TXij < 0 °C.",
+"17:TMge5":{
+  "index_code": "TMge5",
+  "index_name": "TM of greater than or equal to 5 °C",
+  "index_description": "Number of days when TM (daily mean temperature) ≥ 5 °C.",
   "sector_name": "Energy",
-  "low_index_indication": "Positive Effects: Lower heating demand and energy costs during winter.\nNegative Effects: Reduced efficiency of some renewable energy sources if reduced snowpack leads to lower river flows.",
-  "high_index_indication": "Positive Effects: Consistent cold temperatures may improve the efficiency of certain cooling processes in industrial settings.\nNegative Effects: Higher heating demand and energy costs, potential strain on energy supply systems.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -454,13 +365,13 @@
   ]
 },
 
-"ID":{
-  "index_code": "ID",
-  "index_name": "Number of icing days",
-  "index_description": "Annual count of days when TX (daily maximum temperature) < 0 °C. Let TXijbe daily maximum temperature on day i in year j. Count the number of days where TXij < 0 °C.",
+"17:TMge5":{
+  "index_code": "TMge5",
+  "index_name": "TM of greater than or equal to 5 °C",
+  "index_description": "Number of days when TM (daily mean temperature) ≥ 5 °C.",
   "sector_name": "Health",
-  "low_index_indication": "Positive Effects: Reduced incidence of cold-related health issues, such as hypothermia and frostbite.\nNegative Effects: Potential increase in vector-borne diseases if pests survive milder winters.",
-  "high_index_indication": "Positive Effects: Natural reduction in pest populations, reducing vector-borne diseases.\nNegative Effects: Increased incidence of cold-related health issues, higher healthcare costs related to cold weather.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -471,13 +382,13 @@
   ]
 },
 
-"ID":{
-  "index_code": "ID",
-  "index_name": "Number of icing days",
-  "index_description": "Annual count of days when TX (daily maximum temperature) < 0 °C. Let TXijbe daily maximum temperature on day i in year j. Count the number of days where TXij < 0 °C.",
+"17:TMge5":{
+  "index_code": "TMge5",
+  "index_name": "TM of greater than or equal to 5 °C",
+  "index_description": "Number of days when TM (daily mean temperature) ≥ 5 °C.",
   "sector_name": "Ecosystems_and_Biodiversity",
-  "low_index_indication": "Positive Effects: Extended growing seasons for plants, potential for species expansion into new areas.\nNegative Effects: Disruption of ecological balances, increased competition from invasive species, altered phenology of plants and animals.",
-  "high_index_indication": "Positive Effects: Maintenance of traditional ecological balances and phenological cycles.\nNegative Effects: Stress on species not adapted to prolonged cold, potential loss of biodiversity.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -488,13 +399,13 @@
   ]
 },
 
-"ID":{
-  "index_code": "ID",
-  "index_name": "Number of icing days",
-  "index_description": "Annual count of days when TX (daily maximum temperature) < 0 °C. Let TXijbe daily maximum temperature on day i in year j. Count the number of days where TXij < 0 °C.",
+"17:TMge5":{
+  "index_code": "TMge5",
+  "index_name": "TM of greater than or equal to 5 °C",
+  "index_description": "Number of days when TM (daily mean temperature) ≥ 5 °C.",
   "sector_name": "Infrastructure_and_Urban_Areas",
-  "low_index_indication": "Positive Effects: Reduced need for winter maintenance of roads and infrastructure, lower costs for snow and ice removal.\nNegative Effects: Potential for increased weathering and deterioration of infrastructure not designed for milder conditions.",
-  "high_index_indication": "Positive Effects: Opportunities for winter tourism activities, such as ice festivals and winter sports.\nNegative Effects: Increased maintenance costs, higher risk of infrastructure damage from freeze-thaw cycles.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -506,16 +417,13 @@
 },
 
 
-
-
-
-  "TXx":{
-  "index_code": "TXx",
-  "index_name": "Maximum value of daily maximum temperature",
-  "index_description": "Let TXx be the daily maximum temperatures in month k, period j. The maximum daily maximum temperature each month is then TXxkj = max(TXxkj).",
+  "18:TMlt5":{
+  "index_code": "TMlt5",
+  "index_name": "TM of at least 5 °C",
+  "index_description": "Number of days when TM (daily mean temperature) < 5 °C.",
   "sector_name": "Agriculture",
-  "low_index_indication": "Positive Effects: Reduced heat stress on crops, potentially fewer incidents of crop damage due to extreme heat.\nNegative Effects: Potentially reduced growth rates for crops that require high temperatures.",
-  "high_index_indication": "Positive Effects: Potential for heat-tolerant crop varieties.\nNegative Effects: Increased heat stress on crops, higher risk of yield loss and crop failure, increased water demand for irrigation.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -526,13 +434,13 @@
   ]
 },
 
-"TXx":{
-  "index_code": "TXx",
-  "index_name": "Maximum value of daily maximum temperature",
-  "index_description": "Let TXx be the daily maximum temperatures in month k, period j. The maximum daily maximum temperature each month is then TXxkj = max(TXxkj).",
+"18:TMlt5":{
+  "index_code": "TMlt5",
+  "index_name": "TM of at least 5 °C",
+  "index_description": "Number of days when TM (daily mean temperature) < 5 °C.",
   "sector_name": "Water_Resources",
-  "low_index_indication": "Positive Effects: Lower evaporation rates, more stable water supplies.\nNegative Effects: Potentially less runoff from snowmelt if the temperature is unusually low.",
-  "high_index_indication": "Positive Effects: None generally, as high temperatures typically stress water resources.\nNegative Effects: Higher evaporation rates, potential for water shortages, increased demand for irrigation.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -543,13 +451,13 @@
   ]
 },
 
-"TXx":{
-  "index_code": "TXx",
-  "index_name": "Maximum value of daily maximum temperature",
-  "index_description": "Let TXx be the daily maximum temperatures in month k, period j. The maximum daily maximum temperature each month is then TXxkj = max(TXxkj).",
+"18:TMlt5":{
+  "index_code": "TMlt5",
+  "index_name": "TM of at least 5 °C",
+  "index_description": "Number of days when TM (daily mean temperature) < 5 °C.",
   "sector_name": "Energy",
-  "low_index_indication": "Positive Effects: Lower peak electricity demand for cooling, reduced strain on power grids.\nNegative Effects: Reduced energy consumption could impact the economic viability of energy providers.",
-  "high_index_indication": "Positive Effects: Economic benefits for energy providers due to increased demand.\nNegative Effects: Increased peak electricity demand for cooling, higher energy costs, potential blackouts.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -560,13 +468,13 @@
   ]
 },
 
-"TXx":{
-  "index_code": "TXx",
-  "index_name": "Maximum value of daily maximum temperature",
-  "index_description": "Let TXx be the daily maximum temperatures in month k, period j. The maximum daily maximum temperature each month is then TXxkj = max(TXxkj).",
+"18:TMlt5":{
+  "index_code": "TMlt5",
+  "index_name": "TM of at least 5 °C",
+  "index_description": "Number of days when TM (daily mean temperature) < 5 °C.",
   "sector_name": "Health",
-  "low_index_indication": "Positive Effects: Fewer heat-related illnesses and deaths, reduced stress on healthcare systems.\nNegative Effects: Minimal, unless the temperature is significantly below the norm, which could impact vulnerable populations.",
-  "high_index_indication": "Positive Effects: None generally, as high temperatures typically stress health systems.\nNegative Effects: Higher incidence of heat-related illnesses and deaths, increased healthcare costs.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -577,13 +485,13 @@
   ]
 },
 
-"TXx":{
-  "index_code": "TXx",
-  "index_name": "Maximum value of daily maximum temperature",
-  "index_description": "Let TXx be the daily maximum temperatures in month k, period j. The maximum daily maximum temperature each month is then TXxkj = max(TXxkj).",
+"18:TMlt5":{
+  "index_code": "TMlt5",
+  "index_name": "TM of at least 5 °C",
+  "index_description": "Number of days when TM (daily mean temperature) < 5 °C.",
   "sector_name": "Ecosystems_and_Biodiversity",
-  "low_index_indication": "Positive Effects: Less stress on temperature-sensitive species.\nNegative Effects: Potential disruption in the growth cycles of heat-dependent species.",
-  "high_index_indication": "Positive Effects: Potential expansion of heat-tolerant species.\nNegative Effects: Stress on temperature-sensitive species, potential habitat loss, increased risk of wildfires.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -594,13 +502,13 @@
   ]
 },
 
-"TXx":{
-  "index_code": "TXx",
-  "index_name": "Maximum value of daily maximum temperature",
-  "index_description": "Let TXx be the daily maximum temperatures in month k, period j. The maximum daily maximum temperature each month is then TXxkj = max(TXxkj).",
+"18:TMlt5":{
+  "index_code": "TMlt5",
+  "index_name": "TM of at least 5 °C",
+  "index_description": "Number of days when TM (daily mean temperature) < 5 °C.",
   "sector_name": "Infrastructure_and_Urban_Areas",
-  "low_index_indication": "Positive Effects: Less thermal expansion and heat-related wear on infrastructure, reduced cooling costs for buildings.\nNegative Effects: None generally, unless unusually low temperatures cause unanticipated issues.",
-  "high_index_indication": "Positive Effects: Opportunities for the design of heat-resistant infrastructure.\nNegative Effects: Greater thermal expansion and wear on infrastructure, higher cooling costs, increased risk of heat-related damage.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -614,14 +522,13 @@
 
 
 
-
-  "7:TX10p":{
-  "index_code": "TX10p",
-  "index_name": "Percentage of days when TX < 10th percentile",
-  "index_description": "Let TXij be the daily maximum temperature on day i in period j and let TXin10 be the calendar day 10th percentile centred on a 5-day window for the base period 1961-1990. The percentage of time for the base period is determined where TXij < TXin10. To avoid possible inhomogeneity across the in-base and out-base periods",
+  "19:TMge10":{
+  "index_code": "TMge10",
+  "index_name": "TM of greater than or equal to 10 °C",
+  "index_description": "Number of days when TM (daily mean temperature) ≥ 10 °C.",
   "sector_name": "Agriculture",
-  "low_index_indication": "Positive Effects: Increased productivity of heat-loving crops, extended growing seasons.\nNegative Effects: Increased heat stress on crops, higher water demand for irrigation.",
-  "high_index_indication": "Positive Effects: Reduced heat stress on crops, lower water demand.\nNegative Effects: Reduced productivity of heat-loving crops, shorter growing seasons.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -632,13 +539,13 @@
   ]
 },
 
-"7:TX10p":{
-  "index_code": "TX10p",
-  "index_name": "Percentage of days when TX < 10th percentile",
-  "index_description": "Let TXij be the daily maximum temperature on day i in period j and let TXin10 be the calendar day 10th percentile centred on a 5-day window for the base period 1961-1990. The percentage of time for the base period is determined where TXij < TXin10. To avoid possible inhomogeneity across the in-base and out-base periods",
+"19:TMge10":{
+  "index_code": "TMge10",
+  "index_name": "TM of greater than or equal to 10 °C",
+  "index_description": "Number of days when TM (daily mean temperature) ≥ 10 °C.",
   "sector_name": "Water_Resources",
-  "low_index_indication": "Positive Effects: Reduced need for heating water systems.\nNegative Effects: Increased evaporation rates, higher demand for irrigation water.",
-  "high_index_indication": "Positive Effects: Reduced evaporation rates, more stable water supplies.\nNegative Effects: Increased heating demand for water systems.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -649,13 +556,13 @@
   ]
 },
 
-"7:TX10p":{
-  "index_code": "TX10p",
-  "index_name": "Percentage of days when TX < 10th percentile",
-  "index_description": "Let TXij be the daily maximum temperature on day i in period j and let TXin10 be the calendar day 10th percentile centred on a 5-day window for the base period 1961-1990. The percentage of time for the base period is determined where TXij < TXin10. To avoid possible inhomogeneity across the in-base and out-base periods",
+"19:TMge10":{
+  "index_code": "TMge10",
+  "index_name": "TM of greater than or equal to 10 °C",
+  "index_description": "Number of days when TM (daily mean temperature) ≥ 10 °C.",
   "sector_name": "Energy",
-  "low_index_indication": "Positive Effects: Reduced heating demand, lower energy costs.\nNegative Effects: Increased cooling demand, potential strain on energy supply.",
-  "high_index_indication": "Positive Effects: Reduced cooling demand, lower energy costs.\nNegative Effects: Increased heating demand, higher energy costs.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -666,13 +573,13 @@
   ]
 },
 
-"7:TX10p":{
-  "index_code": "TX10p",
-  "index_name": "Percentage of days when TX < 10th percentile",
-  "index_description": "Let TXij be the daily maximum temperature on day i in period j and let TXin10 be the calendar day 10th percentile centred on a 5-day window for the base period 1961-1990. The percentage of time for the base period is determined where TXij < TXin10. To avoid possible inhomogeneity across the in-base and out-base periods",
+"19:TMge10":{
+  "index_code": "TMge10",
+  "index_name": "TM of greater than or equal to 10 °C",
+  "index_description": "Number of days when TM (daily mean temperature) ≥ 10 °C.",
   "sector_name": "Health",
-  "low_index_indication": "Positive Effects: Reduced incidence of cold-related health issues.\nNegative Effects: Increased risk of heat-related illnesses.",
-  "high_index_indication": "Positive Effects: Reduced heat-related illnesses.\nNegative Effects: Increased incidence of cold-related health issues.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -683,13 +590,13 @@
   ]
 },
 
-"7:TX10p":{
-  "index_code": "TX10p",
-  "index_name": "Percentage of days when TX < 10th percentile",
-  "index_description": "Let TXij be the daily maximum temperature on day i in period j and let TXin10 be the calendar day 10th percentile centred on a 5-day window for the base period 1961-1990. The percentage of time for the base period is determined where TXij < TXin10. To avoid possible inhomogeneity across the in-base and out-base periods",
+"19:TMge10":{
+  "index_code": "TMge10",
+  "index_name": "TM of greater than or equal to 10 °C",
+  "index_description": "Number of days when TM (daily mean temperature) ≥ 10 °C.",
   "sector_name": "Ecosystems_and_Biodiversity",
-  "low_index_indication": "Positive Effects: Extended growing seasons, potential for species expansion.\nNegative Effects: Disruption of ecological balances, increased competition from invasive species.",
-  "high_index_indication": "Positive Effects: Maintenance of traditional ecological balances.\nNegative Effects: Stress on species not adapted to cooler conditions, potential loss of biodiversity.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -700,13 +607,13 @@
   ]
 },
 
-"7:TX10p":{
-  "index_code": "TX10p",
-  "index_name": "Percentage of days when TX < 10th percentile",
-  "index_description": "Let TXij be the daily maximum temperature on day i in period j and let TXin10 be the calendar day 10th percentile centred on a 5-day window for the base period 1961-1990. The percentage of time for the base period is determined where TXij < TXin10. To avoid possible inhomogeneity across the in-base and out-base periods",
+"19:TMge10":{
+  "index_code": "TMge10",
+  "index_name": "TM of greater than or equal to 10 °C",
+  "index_description": "Number of days when TM (daily mean temperature) ≥ 10 °C.",
   "sector_name": "Infrastructure_and_Urban_Areas",
-  "low_index_indication": "Positive Effects: Reduced heating costs, less need for winter maintenance.\nNegative Effects: Increased wear on cooling systems, higher cooling costs.",
-  "high_index_indication": "Positive Effects: Reduced cooling costs, less wear on cooling systems.\nNegative Effects: Increased heating costs, higher risk of freeze-thaw damage to infrastructure.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -721,13 +628,13 @@
 
 
 
-  "8:TN90p":{
-  "index_code": "TN90p",
-  "index_name": "Percentage of days when TN > 90th percentile",
-  "index_description": "Let TNij be the daily minimum temperature on day i in period j and let TNin90 be the calendar day 90th percentile centred on a 5-day window for the base period 1961-1990. The percentage of time for the base period is determined where TNij > TNin90. To avoid possible inhomogeneity across the in-base and out-base periods",
+  "20:TMlt10":{
+  "index_code": "TMlt10",
+  "index_name": "TM of at least 10 °C",
+  "index_description": "Number of days when TM (daily mean temperature) < 10 °C.",
   "sector_name": "Agriculture",
-  "low_index_indication": "Positive Effects: Reduced heat stress on crops, lower irrigation needs.\nNegative Effects: Increased risk of frost damage, shorter growing seasons for heat-loving crops.",
-  "high_index_indication": "Positive Effects: Improved growth for heat-loving crops, extended growing seasons.\nNegative Effects: Increased heat stress on crops, higher irrigation needs.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -738,13 +645,13 @@
   ]
 },
 
-"8:TN90p":{
-  "index_code": "TN90p",
-  "index_name": "Percentage of days when TN > 90th percentile",
-  "index_description": "Let TNij be the daily minimum temperature on day i in period j and let TNin90 be the calendar day 90th percentile centred on a 5-day window for the base period 1961-1990. The percentage of time for the base period is determined where TNij > TNin90. To avoid possible inhomogeneity across the in-base and out-base periods",
+"20:TMlt10":{
+  "index_code": "TMlt10",
+  "index_name": "TM of at least 10 °C",
+  "index_description": "Number of days when TM (daily mean temperature) < 10 °C.",
   "sector_name": "Water_Resources",
-  "low_index_indication": "Positive Effects: Reduced evaporation rates, more stable water supplies.\nNegative Effects: Increased risk of frozen pipes, higher maintenance costs for water infrastructure.",
-  "high_index_indication": "Positive Effects: Reduced risk of frozen pipes, lower maintenance costs for water infrastructure.\nNegative Effects: Increased evaporation rates, higher demand for irrigation water.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -755,13 +662,13 @@
   ]
 },
 
-"8:TN90p":{
-  "index_code": "TN90p",
-  "index_name": "Percentage of days when TN > 90th percentile",
-  "index_description": "Let TNij be the daily minimum temperature on day i in period j and let TNin90 be the calendar day 90th percentile centred on a 5-day window for the base period 1961-1990. The percentage of time for the base period is determined where TNij > TNin90. To avoid possible inhomogeneity across the in-base and out-base periods",
+"20:TMlt10":{
+  "index_code": "TMlt10",
+  "index_name": "TM of at least 10 °C",
+  "index_description": "Number of days when TM (daily mean temperature) < 10 °C.",
   "sector_name": "Energy",
-  "low_index_indication": "Positive Effects: Reduced cooling demand, lower energy costs in summer.\nNegative Effects: Increased heating demand, higher energy costs in winter.",
-  "high_index_indication": "Positive Effects: Reduced heating demand, lower energy costs in winter.\nNegative Effects: Increased cooling demand, higher energy costs in summer.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -772,13 +679,13 @@
   ]
 },
 
-"8:TN90p":{
-  "index_code": "TN90p",
-  "index_name": "Percentage of days when TN > 90th percentile",
-  "index_description": "Let TNij be the daily minimum temperature on day i in period j and let TNin90 be the calendar day 90th percentile centred on a 5-day window for the base period 1961-1990. The percentage of time for the base period is determined where TNij > TNin90. To avoid possible inhomogeneity across the in-base and out-base periods",
+"20:TMlt10":{
+  "index_code": "TMlt10",
+  "index_name": "TM of at least 10 °C",
+  "index_description": "Number of days when TM (daily mean temperature) < 10 °C.",
   "sector_name": "Health",
-  "low_index_indication": "Positive Effects: Reduced incidence of heat-related illnesses.\nNegative Effects: Increased risk of cold-related health issues.",
-  "high_index_indication": "Positive Effects: Reduced incidence of cold-related health issues.\nNegative Effects: Increased risk of heat-related illnesses, higher healthcare costs.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -789,13 +696,13 @@
   ]
 },
 
-"8:TN90p":{
-  "index_code": "TN90p",
-  "index_name": "Percentage of days when TN > 90th percentile",
-  "index_description": "Let TNij be the daily minimum temperature on day i in period j and let TNin90 be the calendar day 90th percentile centred on a 5-day window for the base period 1961-1990. The percentage of time for the base period is determined where TNij > TNin90. To avoid possible inhomogeneity across the in-base and out-base periods",
+"20:TMlt10":{
+  "index_code": "TMlt10",
+  "index_name": "TM of at least 10 °C",
+  "index_description": "Number of days when TM (daily mean temperature) < 10 °C.",
   "sector_name": "Ecosystems_and_Biodiversity",
-  "low_index_indication": "Positive Effects: Maintenance of traditional ecological balances.\nNegative Effects: Stress on species not adapted to cooler conditions, potential loss of biodiversity.",
-  "high_index_indication": "Positive Effects: Extended growing seasons, potential for species expansion.\nNegative Effects: Disruption of ecological balances, increased competition from invasive species.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -806,13 +713,13 @@
   ]
 },
 
-"8:TN90p":{
-  "index_code": "TN90p",
-  "index_name": "Percentage of days when TN > 90th percentile",
-  "index_description": "Let TNij be the daily minimum temperature on day i in period j and let TNin90 be the calendar day 90th percentile centred on a 5-day window for the base period 1961-1990. The percentage of time for the base period is determined where TNij > TNin90. To avoid possible inhomogeneity across the in-base and out-base periods",
+"20:TMlt10":{
+  "index_code": "TMlt10",
+  "index_name": "TM of at least 10 °C",
+  "index_description": "Number of days when TM (daily mean temperature) < 10 °C.",
   "sector_name": "Infrastructure_and_Urban_Areas",
-  "low_index_indication": "Positive Effects: Reduced cooling costs, less wear on cooling systems.\nNegative Effects: Increased heating costs, higher risk of freeze-thaw damage to infrastructure.",
-  "high_index_indication": "Positive Effects: Reduced heating costs, less need for winter maintenance.\nNegative Effects: Increased wear on cooling systems, higher cooling costs.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -826,14 +733,13 @@
 
 
 
-
-  "9:TX90p":{
-  "index_code": "TX90p",
-  "index_name": "Percentage of days when TX > 90th percentile",
-  "index_description": "Let TXij be the daily maximum temperature on day i in period j and let TXin90 be the calendar day 90th percentile centred on a 5-day window for the base period 1961-1990. The percentage of time for the base period is determined where TXij > TXin90. To avoid possible inhomogeneity across the in-base and out-base periods",
+  "21:TMm":{
+  "index_code": "TMm",
+  "index_name": "Mean TM",
+  "index_description": "The mean daily mean temperature.",
   "sector_name": "Agriculture",
-  "low_index_indication": "Positive Effects: Reduced heat stress on crops, lower irrigation needs.\nNegative Effects: Reduced productivity of heat-loving crops, shorter growing seasons.",
-  "high_index_indication": "Positive Effects: Improved growth for heat-loving crops, extended growing seasons.\nNegative Effects: Increased heat stress on crops, higher irrigation needs.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -844,13 +750,13 @@
   ]
 },
 
-"9:TX90p":{
-  "index_code": "TX90p",
-  "index_name": "Percentage of days when TX > 90th percentile",
-  "index_description": "Let TXij be the daily maximum temperature on day i in period j and let TXin90 be the calendar day 90th percentile centred on a 5-day window for the base period 1961-1990. The percentage of time for the base period is determined where TXij > TXin90. To avoid possible inhomogeneity across the in-base and out-base periods",
+"21:TMm":{
+  "index_code": "TMm",
+  "index_name": "Mean TM",
+  "index_description": "The mean daily mean temperature.",
   "sector_name": "Water_Resources",
-  "low_index_indication": "Positive Effects: Reduced evaporation rates, more stable water supplies.\nNegative Effects: Increased risk of frozen pipes, higher maintenance costs for water infrastructure.",
-  "high_index_indication": "Positive Effects: Reduced risk of frozen pipes, lower maintenance costs for water infrastructure.\nNegative Effects: Increased evaporation rates, higher demand for irrigation water.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -861,13 +767,13 @@
   ]
 },
 
-"9:TX90p":{
-  "index_code": "TX90p",
-  "index_name": "Percentage of days when TX > 90th percentile",
-  "index_description": "Let TXij be the daily maximum temperature on day i in period j and let TXin90 be the calendar day 90th percentile centred on a 5-day window for the base period 1961-1990. The percentage of time for the base period is determined where TXij > TXin90. To avoid possible inhomogeneity across the in-base and out-base periods",
+"21:TMm":{
+  "index_code": "TMm",
+  "index_name": "Mean TM",
+  "index_description": "The mean daily mean temperature.",
   "sector_name": "Energy",
-  "low_index_indication": "Positive Effects: Reduced cooling demand, lower energy costs in summer.\nNegative Effects: Increased heating demand, higher energy costs in winter.",
-  "high_index_indication": "Positive Effects: Reduced heating demand, lower energy costs in winter.\nNegative Effects: Increased cooling demand, higher energy costs in summer.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -878,13 +784,13 @@
   ]
 },
 
-"9:TX90p":{
-  "index_code": "TX90p",
-  "index_name": "Percentage of days when TX > 90th percentile",
-  "index_description": "Let TXij be the daily maximum temperature on day i in period j and let TXin90 be the calendar day 90th percentile centred on a 5-day window for the base period 1961-1990. The percentage of time for the base period is determined where TXij > TXin90. To avoid possible inhomogeneity across the in-base and out-base periods",
+"21:TMm":{
+  "index_code": "TMm",
+  "index_name": "Mean TM",
+  "index_description": "The mean daily mean temperature.",
   "sector_name": "Health",
-  "low_index_indication": "Positive Effects: Reduced incidence of heat-related illnesses.\nNegative Effects: Increased risk of cold-related health issues.",
-  "high_index_indication": "Positive Effects: Reduced incidence of cold-related health issues.\nNegative Effects: Increased risk of heat-related illnesses, higher healthcare costs.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -895,13 +801,13 @@
   ]
 },
 
-"9:TX90p":{
-  "index_code": "TX90p",
-  "index_name": "Percentage of days when TX > 90th percentile",
-  "index_description": "Let TXij be the daily maximum temperature on day i in period j and let TXin90 be the calendar day 90th percentile centred on a 5-day window for the base period 1961-1990. The percentage of time for the base period is determined where TXij > TXin90. To avoid possible inhomogeneity across the in-base and out-base periods",
+"21:TMm":{
+  "index_code": "TMm",
+  "index_name": "Mean TM",
+  "index_description": "The mean daily mean temperature.",
   "sector_name": "Ecosystems_and_Biodiversity",
-  "low_index_indication": "Positive Effects: Maintenance of traditional ecological balances.\nNegative Effects: Stress on species not adapted to cooler conditions, potential loss of biodiversity.",
-  "high_index_indication": "Positive Effects: Extended growing seasons, potential for species expansion.\nNegative Effects: Disruption of ecological balances, increased competition from invasive species.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -912,13 +818,13 @@
   ]
 },
 
-"9:TX90p":{
-  "index_code": "TX90p",
-  "index_name": "Percentage of days when TX > 90th percentile",
-  "index_description": "Let TXij be the daily maximum temperature on day i in period j and let TXin90 be the calendar day 90th percentile centred on a 5-day window for the base period 1961-1990. The percentage of time for the base period is determined where TXij > TXin90. To avoid possible inhomogeneity across the in-base and out-base periods",
+"21:TMm":{
+  "index_code": "TMm",
+  "index_name": "Mean TM",
+  "index_description": "The mean daily mean temperature.",
   "sector_name": "Infrastructure_and_Urban_Areas",
-  "low_index_indication": "Positive Effects: Reduced cooling costs, less wear on cooling systems.\nNegative Effects: Increased heating costs, higher risk of freeze-thaw damage to infrastructure.",
-  "high_index_indication": "Positive Effects: Reduced heating costs, less need for winter maintenance.\nNegative Effects: Increased wear on cooling systems, higher cooling costs.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -931,23 +837,13 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-  "10:WSDI":{
-  "index_code": "WSDI",
-  "index_name": "Warm spell duration index: annual count of days with at least 6 consecutive days when TX > 90th percentile",
-  "index_description": "Let TXij be the daily maximum temperature on day i in period j and let TXin90 be the calendar day 90th percentile centred on a 5-day window for the base period 1961-1990. Then the number of days per period is summed where, in intervals of at least 6 consecutive days, TXij > TXin90.",
+  "22:TXm":{
+  "index_code": "TXm",
+  "index_name": "Mean TX",
+  "index_description": "The mean daily maximum temperature.",
   "sector_name": "Agriculture",
-  "low_index_indication": "Positive Effects: Reduced heat stress on crops, lower irrigation needs.\nNegative Effects: Shorter growing seasons for heat-loving crops.",
-  "high_index_indication": "Positive Effects: Extended growing seasons, improved growth for heat-loving crops.\nNegative Effects: Increased heat stress on crops, higher water demand for irrigation.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -958,13 +854,13 @@
   ]
 },
 
-"10:WSDI":{
-  "index_code": "WSDI",
-  "index_name": "Warm spell duration index: annual count of days with at least 6 consecutive days when TX > 90th percentile",
-  "index_description": "Let TXij be the daily maximum temperature on day i in period j and let TXin90 be the calendar day 90th percentile centred on a 5-day window for the base period 1961-1990. Then the number of days per period is summed where, in intervals of at least 6 consecutive days, TXij > TXin90.",
+"22:TXm":{
+  "index_code": "TXm",
+  "index_name": "Mean TX",
+  "index_description": "The mean daily maximum temperature.",
   "sector_name": "Water_Resources",
-  "low_index_indication": "Positive Effects: Reduced evaporation rates, more stable water supplies.\nNegative Effects: Increased risk of frozen pipes, higher maintenance costs for water infrastructure.",
-  "high_index_indication": "Positive Effects: Reduced risk of frozen pipes, lower maintenance costs for water infrastructure.\nNegative Effects: Increased evaporation rates, higher demand for irrigation water.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -975,13 +871,13 @@
   ]
 },
 
-"10:WSDI":{
-  "index_code": "WSDI",
-  "index_name": "Warm spell duration index: annual count of days with at least 6 consecutive days when TX > 90th percentile",
-  "index_description": "Let TXij be the daily maximum temperature on day i in period j and let TXin90 be the calendar day 90th percentile centred on a 5-day window for the base period 1961-1990. Then the number of days per period is summed where, in intervals of at least 6 consecutive days, TXij > TXin90.",
+"22:TXm":{
+  "index_code": "TXm",
+  "index_name": "Mean TX",
+  "index_description": "The mean daily maximum temperature.",
   "sector_name": "Energy",
-  "low_index_indication": "Positive Effects: Reduced cooling demand, lower energy costs in summer.\nNegative Effects: Increased heating demand, higher energy costs in winter.",
-  "high_index_indication": "Positive Effects: Reduced heating demand, lower energy costs in winter.\nNegative Effects: Increased cooling demand, higher energy costs in summer.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -992,13 +888,13 @@
   ]
 },
 
-"10:WSDI":{
-  "index_code": "WSDI",
-  "index_name": "Warm spell duration index: annual count of days with at least 6 consecutive days when TX > 90th percentile",
-  "index_description": "Let TXij be the daily maximum temperature on day i in period j and let TXin90 be the calendar day 90th percentile centred on a 5-day window for the base period 1961-1990. Then the number of days per period is summed where, in intervals of at least 6 consecutive days, TXij > TXin90.",
+"22:TXm":{
+  "index_code": "TXm",
+  "index_name": "Mean TX",
+  "index_description": "The mean daily maximum temperature.",
   "sector_name": "Health",
-  "low_index_indication": "Positive Effects: Reduced incidence of heat-related illnesses.\nNegative Effects: Increased risk of cold-related health issues.",
-  "high_index_indication": "Positive Effects: Reduced incidence of cold-related health issues.\nNegative Effects: Increased risk of heat-related illnesses, higher healthcare costs.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -1009,13 +905,13 @@
   ]
 },
 
-"10:WSDI":{
-  "index_code": "WSDI",
-  "index_name": "Warm spell duration index: annual count of days with at least 6 consecutive days when TX > 90th percentile",
-  "index_description": "Let TXij be the daily maximum temperature on day i in period j and let TXin90 be the calendar day 90th percentile centred on a 5-day window for the base period 1961-1990. Then the number of days per period is summed where, in intervals of at least 6 consecutive days, TXij > TXin90.",
+"22:TXm":{
+  "index_code": "TXm",
+  "index_name": "Mean TX",
+  "index_description": "The mean daily maximum temperature.",
   "sector_name": "Ecosystems_and_Biodiversity",
-  "low_index_indication": "Positive Effects: Maintenance of traditional ecological balances.\nNegative Effects: Stress on species not adapted to cooler conditions, potential loss of biodiversity.",
-  "high_index_indication": "Positive Effects: Extended growing seasons, potential for species expansion.\nNegative Effects: Disruption of ecological balances, increased competition from invasive species.",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -1026,13 +922,653 @@
   ]
 },
 
-"10:WSDI":{
-  "index_code": "WSDI",
-  "index_name": "Warm spell duration index: annual count of days with at least 6 consecutive days when TX > 90th percentile",
-  "index_description": "Let TXij be the daily maximum temperature on day i in period j and let TXin90 be the calendar day 90th percentile centred on a 5-day window for the base period 1961-1990. Then the number of days per period is summed where, in intervals of at least 6 consecutive days, TXij > TXin90.",
+"22:TXm":{
+  "index_code": "TXm",
+  "index_name": "Mean TX",
+  "index_description": "The mean daily maximum temperature.",
   "sector_name": "Infrastructure_and_Urban_Areas",
-  "low_index_indication": "Positive Effects: Reduced cooling costs, less wear on cooling systems.\nNegative Effects: Increased heating costs, higher risk of freeze-thaw damage to infrastructure.",
-  "high_index_indication": "Positive Effects: Reduced heating costs, less need for winter maintenance.\nNegative Effects: Increased wear on cooling systems, higher cooling costs.",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+
+  "23:TNm":{
+  "index_code": "TNm",
+  "index_name": "Mean TN",
+  "index_description": "The mean daily minimum temperature.",
+  "sector_name": "Agriculture",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"23:TNm":{
+  "index_code": "TNm",
+  "index_name": "Mean TN",
+  "index_description": "The mean daily minimum temperature.",
+  "sector_name": "Water_Resources",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"23:TNm":{
+  "index_code": "TNm",
+  "index_name": "Mean TN",
+  "index_description": "The mean daily minimum temperature.",
+  "sector_name": "Energy",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"23:TNm":{
+  "index_code": "TNm",
+  "index_name": "Mean TN",
+  "index_description": "The mean daily minimum temperature.",
+  "sector_name": "Health",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"23:TNm":{
+  "index_code": "TNm",
+  "index_name": "Mean TN",
+  "index_description": "The mean daily minimum temperature.",
+  "sector_name": "Ecosystems_and_Biodiversity",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"23:TNm":{
+  "index_code": "TNm",
+  "index_name": "Mean TN",
+  "index_description": "The mean daily minimum temperature.",
+  "sector_name": "Infrastructure_and_Urban_Areas",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+
+
+
+
+
+
+
+  "24:TXge30":{
+  "index_code": "TXge30",
+  "index_name": "TX of greater than or equal to 30 °C",
+  "index_description": "Number of days when TX ≥ 30 ≥C.",
+  "sector_name": "Agriculture",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"24:TXge30":{
+  "index_code": "TXge30",
+  "index_name": "TX of greater than or equal to 30 °C",
+  "index_description": "Number of days when TX ≥ 30 ≥C.",
+  "sector_name": "Water_Resources",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"24:TXge30":{
+  "index_code": "TXge30",
+  "index_name": "TX of greater than or equal to 30 °C",
+  "index_description": "Number of days when TX ≥ 30 ≥C.",
+  "sector_name": "Energy",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"24:TXge30":{
+  "index_code": "TXge30",
+  "index_name": "TX of greater than or equal to 30 °C",
+  "index_description": "Number of days when TX ≥ 30 ≥C.",
+  "sector_name": "Health",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"24:TXge30":{
+  "index_code": "TXge30",
+  "index_name": "TX of greater than or equal to 30 °C",
+  "index_description": "Number of days when TX ≥ 30 ≥C.",
+  "sector_name": "Ecosystems_and_Biodiversity",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"24:TXge30":{
+  "index_code": "TXge30",
+  "index_name": "TX of greater than or equal to 30 °C",
+  "index_description": "Number of days when TX ≥ 30 ≥C.",
+  "sector_name": "Infrastructure_and_Urban_Areas",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+
+
+
+
+
+  "25:TXge35":{
+  "index_code": "TXge35",
+  "index_name": "TX of greater than or equal to 35 °C",
+  "index_description": "Number of days when TX ≥ 35 ≥C.",
+  "sector_name": "Agriculture",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"25:TXge35":{
+  "index_code": "TXge35",
+  "index_name": "TX of greater than or equal to 35 °C",
+  "index_description": "Number of days when TX ≥ 35 ≥C.",
+  "sector_name": "Water_Resources",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"25:TXge35":{
+  "index_code": "TXge35",
+  "index_name": "TX of greater than or equal to 35 °C",
+  "index_description": "Number of days when TX ≥ 35 ≥C.",
+  "sector_name": "Energy",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"25:TXge35":{
+  "index_code": "TXge35",
+  "index_name": "TX of greater than or equal to 35 °C",
+  "index_description": "Number of days when TX ≥ 35 ≥C.",
+  "sector_name": "Health",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"25:TXge35":{
+  "index_code": "TXge35",
+  "index_name": "TX of greater than or equal to 35 °C",
+  "index_description": "Number of days when TX ≥ 35 ≥C.",
+  "sector_name": "Ecosystems_and_Biodiversity",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"25:TXge35":{
+  "index_code": "TXge35",
+  "index_name": "TX of greater than or equal to 35 °C",
+  "index_description": "Number of days when TX ≥ 35 ≥C.",
+  "sector_name": "Infrastructure_and_Urban_Areas",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+
+
+
+
+
+  "26:TXgt50p":{
+  "index_code": "TXgt50p",
+  "index_name": "Percentage of days with above average temperature",
+  "index_description": "Percentage of days when TX > 50th percentile.",
+  "sector_name": "Agriculture",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"26:TXgt50p":{
+  "index_code": "TXgt50p",
+  "index_name": "Percentage of days with above average temperature",
+  "index_description": "Percentage of days when TX > 50th percentile.",
+  "sector_name": "Water_Resources",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"26:TXgt50p":{
+  "index_code": "TXgt50p",
+  "index_name": "Percentage of days with above average temperature",
+  "index_description": "Percentage of days when TX > 50th percentile.",
+  "sector_name": "Energy",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"26:TXgt50p":{
+  "index_code": "TXgt50p",
+  "index_name": "Percentage of days with above average temperature",
+  "index_description": "Percentage of days when TX > 50th percentile.",
+  "sector_name": "Health",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"26:TXgt50p":{
+  "index_code": "TXgt50p",
+  "index_name": "Percentage of days with above average temperature",
+  "index_description": "Percentage of days when TX > 50th percentile.",
+  "sector_name": "Ecosystems_and_Biodiversity",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"26:TXgt50p":{
+  "index_code": "TXgt50p",
+  "index_name": "Percentage of days with above average temperature",
+  "index_description": "Percentage of days when TX > 50th percentile.",
+  "sector_name": "Infrastructure_and_Urban_Areas",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+
+
+
+
+
+  "27:TNlt2":{
+  "index_code": "TNlt2",
+  "index_name": "TN below 2 °C",
+  "index_description": "The number of days when TN < 2 °C.",
+  "sector_name": "Agriculture",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"27:TNlt2":{
+  "index_code": "TNlt2",
+  "index_name": "TN below 2 °C",
+  "index_description": "The number of days when TN < 2 °C.",
+  "sector_name": "Water_Resources",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"27:TNlt2":{
+  "index_code": "TNlt2",
+  "index_name": "TN below 2 °C",
+  "index_description": "The number of days when TN < 2 °C.",
+  "sector_name": "Energy",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"27:TNlt2":{
+  "index_code": "TNlt2",
+  "index_name": "TN below 2 °C",
+  "index_description": "The number of days when TN < 2 °C.",
+  "sector_name": "Health",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"27:TNlt2":{
+  "index_code": "TNlt2",
+  "index_name": "TN below 2 °C",
+  "index_description": "The number of days when TN < 2 °C.",
+  "sector_name": "Ecosystems_and_Biodiversity",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"27:TNlt2":{
+  "index_code": "TNlt2",
+  "index_name": "TN below 2 °C",
+  "index_description": "The number of days when TN < 2 °C.",
+  "sector_name": "Infrastructure_and_Urban_Areas",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+
+
+
+
+
+  "28:TNltm2":{
+  "index_code": "TNltm2",
+  "index_name": "TN below -2 °C",
+  "index_description": "The number of days when TN < -2 °C.",
+  "sector_name": "Agriculture",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"28:TNltm2":{
+  "index_code": "TNltm2",
+  "index_name": "TN below -2 °C",
+  "index_description": "The number of days when TN < -2 °C.",
+  "sector_name": "Water_Resources",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"28:TNltm2":{
+  "index_code": "TNltm2",
+  "index_name": "TN below -2 °C",
+  "index_description": "The number of days when TN < -2 °C.",
+  "sector_name": "Energy",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"28:TNltm2":{
+  "index_code": "TNltm2",
+  "index_name": "TN below -2 °C",
+  "index_description": "The number of days when TN < -2 °C.",
+  "sector_name": "Health",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"28:TNltm2":{
+  "index_code": "TNltm2",
+  "index_name": "TN below -2 °C",
+  "index_description": "The number of days when TN < -2 °C.",
+  "sector_name": "Ecosystems_and_Biodiversity",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"28:TNltm2":{
+  "index_code": "TNltm2",
+  "index_name": "TN below -2 °C",
+  "index_description": "The number of days when TN < -2 °C.",
+  "sector_name": "Infrastructure_and_Urban_Areas",
+  "low_index_indication": "",
+  "high_index_indication": "",
   "has_base_period": false,
   "has_threshold": false,
   "base_period": [],
@@ -1042,6 +1578,361 @@
     100
   ]
 }
+,
+
+
+
+
+
+
+  "29:TNltm20":{
+  "index_code": "TNltm20",
+  "index_name": "TN below -20 °C",
+  "index_description": "The number of days when TN < -20 °C.",
+  "sector_name": "Agriculture",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"29:TNltm20":{
+  "index_code": "TNltm20",
+  "index_name": "TN below -20 °C",
+  "index_description": "The number of days when TN < -20 °C.",
+  "sector_name": "Water_Resources",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"29:TNltm20":{
+  "index_code": "TNltm20",
+  "index_name": "TN below -20 °C",
+  "index_description": "The number of days when TN < -20 °C.",
+  "sector_name": "Energy",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"29:TNltm20":{
+  "index_code": "TNltm20",
+  "index_name": "TN below -20 °C",
+  "index_description": "The number of days when TN < -20 °C.",
+  "sector_name": "Health",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"29:TNltm20":{
+  "index_code": "TNltm20",
+  "index_name": "TN below -20 °C",
+  "index_description": "The number of days when TN < -20 °C.",
+  "sector_name": "Ecosystems_and_Biodiversity",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"29:TNltm20":{
+  "index_code": "TNltm20",
+  "index_name": "TN below -20 °C",
+  "index_description": "The number of days when TN < -20 °C.",
+  "sector_name": "Infrastructure_and_Urban_Areas",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+
+
+
+
+
+
+
+"30:Rx1day":{
+  "index_code": "Rx1day",
+  "index_name": "Maximum 1-day precipitation",
+  "index_description": "Let RRij be the daily precipitation amount on day i in period j. The maximum 1-day value for period j are Rx1dayj = max (RRij)",
+  "sector_name": "Water_Resources",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+
+
+
+
+
+  "31:Rx5day":{
+  "index_code": "Rx5day",
+  "index_name": "Maximum consecutive 5-day precipitation",
+  "index_description": "Let RRkj be the precipitation amount for the 5-day interval ending k, period j. Then maximum 5-day values for period j are Rx5dayj = max (RRkj)",
+  "sector_name": "Agriculture",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"31:Rx5day":{
+  "index_code": "Rx5day",
+  "index_name": "Maximum consecutive 5-day precipitation",
+  "index_description": "Let RRkj be the precipitation amount for the 5-day interval ending k, period j. Then maximum 5-day values for period j are Rx5dayj = max (RRkj)",
+  "sector_name": "Water_Resources",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+
+
+
+
+
+
+  "32:SPI":{
+  "index_code": "SPI",
+  "index_name": "Standardised Precipitation Index",
+  "index_description": "Measure of \"drought\" using the Standardised Precipitation Index on time scales of 3, 6 and 12 months. A drought measure specified as a precipitation deficit. See McKee et al. (1993) and the SPI User Guide (World Meteorological Organization 2012) for details.",
+  "sector_name": "Agriculture",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"32:SPI":{
+  "index_code": "SPI",
+  "index_name": "Standardised Precipitation Index",
+  "index_description": "Measure of \"drought\" using the Standardised Precipitation Index on time scales of 3, 6 and 12 months. A drought measure specified as a precipitation deficit. See McKee et al. (1993) and the SPI User Guide (World Meteorological Organization 2012) for details.",
+  "sector_name": "Water_Resources",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"32:SPI":{
+  "index_code": "SPI",
+  "index_name": "Standardised Precipitation Index",
+  "index_description": "Measure of \"drought\" using the Standardised Precipitation Index on time scales of 3, 6 and 12 months. A drought measure specified as a precipitation deficit. See McKee et al. (1993) and the SPI User Guide (World Meteorological Organization 2012) for details.",
+  "sector_name": "Energy",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"32:SPI":{
+  "index_code": "SPI",
+  "index_name": "Standardised Precipitation Index",
+  "index_description": "Measure of \"drought\" using the Standardised Precipitation Index on time scales of 3, 6 and 12 months. A drought measure specified as a precipitation deficit. See McKee et al. (1993) and the SPI User Guide (World Meteorological Organization 2012) for details.",
+  "sector_name": "Ecosystems_and_Biodiversity",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"32:SPI":{
+  "index_code": "SPI",
+  "index_name": "Standardised Precipitation Index",
+  "index_description": "Measure of \"drought\" using the Standardised Precipitation Index on time scales of 3, 6 and 12 months. A drought measure specified as a precipitation deficit. See McKee et al. (1993) and the SPI User Guide (World Meteorological Organization 2012) for details.",
+  "sector_name": "Infrastructure_and_Urban_Areas",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+
+
+
+
+  "33:SPEI":{
+  "index_code": "SPEI",
+  "index_name": "Standardised Precipitation Evapotranspiration Index",
+  "index_description": "Measure of \"drought\" using the Standardised Precipitation Evapotranspiration Index on time scales of 3, 6 and 12 months. A drought measure specified using precipitation and evaporation. See Vicente-Serrano et al. (2010) for details.",
+  "sector_name": "Agriculture",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"33:SPEI":{
+  "index_code": "SPEI",
+  "index_name": "Standardised Precipitation Evapotranspiration Index",
+  "index_description": "Measure of \"drought\" using the Standardised Precipitation Evapotranspiration Index on time scales of 3, 6 and 12 months. A drought measure specified using precipitation and evaporation. See Vicente-Serrano et al. (2010) for details.",
+  "sector_name": "Water_Resources",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"33:SPEI":{
+  "index_code": "SPEI",
+  "index_name": "Standardised Precipitation Evapotranspiration Index",
+  "index_description": "Measure of \"drought\" using the Standardised Precipitation Evapotranspiration Index on time scales of 3, 6 and 12 months. A drought measure specified using precipitation and evaporation. See Vicente-Serrano et al. (2010) for details.",
+  "sector_name": "Energy",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"33:SPEI":{
+  "index_code": "SPEI",
+  "index_name": "Standardised Precipitation Evapotranspiration Index",
+  "index_description": "Measure of \"drought\" using the Standardised Precipitation Evapotranspiration Index on time scales of 3, 6 and 12 months. A drought measure specified using precipitation and evaporation. See Vicente-Serrano et al. (2010) for details.",
+  "sector_name": "Ecosystems_and_Biodiversity",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+},
+
+"33:SPEI":{
+  "index_code": "SPEI",
+  "index_name": "Standardised Precipitation Evapotranspiration Index",
+  "index_description": "Measure of \"drought\" using the Standardised Precipitation Evapotranspiration Index on time scales of 3, 6 and 12 months. A drought measure specified using precipitation and evaporation. See Vicente-Serrano et al. (2010) for details.",
+  "sector_name": "Infrastructure_and_Urban_Areas",
+  "low_index_indication": "",
+  "high_index_indication": "",
+  "has_base_period": false,
+  "has_threshold": false,
+  "base_period": [],
+  "threshold": 0,
+  "moderate_range": [
+    50,
+    100
+  ]
+}
+
+
+
+
 
 
 

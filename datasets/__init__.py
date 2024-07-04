@@ -11,7 +11,7 @@ import netCDF4 as nc
 import cftime
 import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from flask import Flask, request, jsonify
 from flask_restful import Api
@@ -966,7 +966,7 @@ def index_function_by_name(index_name, data, threshold=None, base_period=None, *
         return calculate_90th_percentile(data, base_period=base_period, **kwargs)
 
 
-    # take mran  temperature
+    # take mean  temperature
     elif index_name == 'GSL':
         return count_growing_season_length(data, **kwargs)
     elif index_name == 'HDD':
@@ -1076,10 +1076,118 @@ def filter_data_by_season_and_year(data, time_variable, season, start_year, end_
     return filtered_data, filtered_dates
 
 
-def plot_time_custom_function_with_dates(file_path, variable_name, start_date=None, end_date=None,
+# def plot_time_custom_function_with_dates(file_path, variable_name, start_date=None, end_date=None,
+#                                          start_year=None, end_year=None, season='annual',
+#                                          index_name='TXx', threshold=20, base_period=None,
+#                                          data_type='temp', lon1=None, lat1=None, lon3=None, lat3=None):
+#     dataset = nc.Dataset(file_path)
+#     try:
+#         xlon = dataset.variables['xlon'][:]
+#         xlat = dataset.variables['xlat'][:]
+#         var_name = None
+#         for varname in dataset.variables.keys():
+#             if variable_name in varname.lower():
+#                 var_name = varname
+#                 break
+#         if var_name is None:
+#             raise ValueError(f"Variable '{variable_name}' not found in the NetCDF file.")
+#         data = dataset.variables[var_name][:].squeeze()
+#         time_variable = dataset.variables['time']
+#
+#         # Handle NaN and Inf values
+#         if np.any(np.isnan(data)) or np.any(np.isinf(data)):
+#             data = np.nan_to_num(data, nan=0.0, posinf=0.0, neginf=0.0)
+#
+#         # Handle different dimensions
+#         if len(data.shape) == 2:
+#             aggregated_data = data
+#         elif len(data.shape) >= 3:
+#             if start_date and end_date:
+#                 start_date_obj = datetime.strptime(start_date, '%Y-%m-%d')
+#                 end_date_obj = datetime.strptime(end_date, '%Y-%m-%d')
+#                 start_idx = nc.date2index(start_date_obj, time_variable, select='nearest')
+#                 end_idx = nc.date2index(end_date_obj, time_variable, select='nearest')
+#                 sliced_data = data[start_idx:end_idx + 1]
+#             elif start_year and end_year and season:
+#                 filtered_data, filtered_dates = filter_data_by_season_and_year(data, time_variable, season, start_year,
+#                                                                                end_year)
+#                 sliced_data = filtered_data
+#             else:
+#                 sliced_data = data
+#
+#             # Aggregate data along the time axis (assuming the time axis is the first dimension)
+#             if len(sliced_data.shape) == 3:
+#                 aggregated_data = index_function_by_name(index_name, sliced_data, axis=0, threshold=threshold, base_period=base_period)
+#             else:
+#                 aggregated_data = index_function_by_name(index_name, sliced_data, axis=0, threshold=threshold, base_period=base_period)
+#         else:
+#             raise ValueError("Unsupported data shape. Expected 2D or 3D+ data.")
+#
+#         # Handle NaN and Inf values
+#         if np.any(np.isnan(aggregated_data)) or np.any(np.isinf(aggregated_data)):
+#             aggregated_data = np.nan_to_num(aggregated_data, nan=0.0, posinf=0.0, neginf=0.0)
+#
+#         fig = plt.figure(figsize=(8, 6))
+#         ax = fig.add_subplot(111, projection=ccrs.PlateCarree())
+#         cmap_name = get_color_mapping_according_to_type(data_type)
+#         levels, cmap = create_color_levels(aggregated_data, cmap_name)
+#         # Ensure levels is sorted
+#         if levels is not None:
+#             levels = sorted(levels)
+#             # Contour levels must be increasing
+#             if levels[0] > levels[-1]:
+#                 levels = levels[::-1]
+#             elif levels[0] == levels[-1]:
+#                 levels = np.linspace(levels[0], levels[0] + 1, num=10)
+#             # print(f"Sorted levels: {levels}")
+#         else:
+#             levels = np.linspace(np.min(aggregated_data), np.max(aggregated_data), num=10)
+#             # print(f"Default levels: {levels}")
+#         contour = plt.contourf(xlon, xlat, aggregated_data, levels=levels, cmap=cmap, transform=ccrs.PlateCarree())
+#         ax.coastlines()
+#         cbar = plt.colorbar(contour, orientation='horizontal')
+#         num_ticks = 10
+#         ticks = np.linspace(aggregated_data.min(), aggregated_data.max(), num=num_ticks)
+#         cbar.set_ticks(ticks)
+#         cbar.set_label(var_name)
+#         if start_date and end_date:
+#             plt.title(f"{variable_name} from {start_date} to {end_date}")
+#         elif start_year and end_year and season:
+#             plt.title(f"{variable_name} from {start_year} to {end_year} ({season.capitalize()})")
+#         else:
+#             plt.title(f"{variable_name}")
+#         plt.xlabel('Longitude')
+#         plt.ylabel('Latitude')
+#
+#         if any(coord is None for coord in [lon1, lat1, lon3, lat3]):
+#             extent = [xlon.min(), xlon.max(), xlat.min(), xlat.max()]
+#         else:
+#             polygon = create_polygon(lon1, lat1, lon3, lat1, lon3, lat3, lon1, lat3)
+#             ax.add_geometries([polygon], ccrs.PlateCarree(), facecolor='none', alpha=0.3)
+#             x_min = min(lon1, lon3) - 1
+#             x_max = max(lon1, lon3) + 1
+#             y_min = min(lat1, lat3) - 1
+#             y_max = max(lat1, lat3) + 1
+#             extent = [x_min, x_max, y_min, y_max]
+#
+#         ax.set_extent(extent, crs=ccrs.PlateCarree())
+#
+#         # Save the plot to a BytesIO object and encode it as a base64 string
+#         img_buf = io.BytesIO()
+#         plt.savefig(img_buf, format='png')
+#         img_buf.seek(0)
+#         img_str = base64.b64encode(img_buf.read()).decode('utf-8')
+#         plt.close(fig)
+#         return img_str
+#     finally:
+#         dataset.close()
+
+def plot_time_custom_function_with_dates(file_path, variable_name, start_date='2022-01-30', end_date='2030-01-01',
                                          start_year=None, end_year=None, season='annual',
-                                         index_name='TXx', threshold=20, base_period=None,
-                                         data_type='temp', lon1=None, lat1=None, lon3=None, lat3=None):
+                                         index_name='TXx', threshold=20, base_period=(1981, 2010),
+                                         data_type='temp', lon1=None, lat1=None, lon2=None, lon3=None, lat3=None
+                                         , lon11=-20, lat11=-40, lon22=60, lon33=60, lat33=50):
+    global time_chart_str
     dataset = nc.Dataset(file_path)
     try:
         xlon = dataset.variables['xlon'][:]
@@ -1116,10 +1224,22 @@ def plot_time_custom_function_with_dates(file_path, variable_name, start_date=No
                 sliced_data = data
 
             # Aggregate data along the time axis (assuming the time axis is the first dimension)
-            if len(sliced_data.shape) == 3:
-                aggregated_data = index_function_by_name(index_name, sliced_data, axis=0, threshold=threshold, base_period=base_period)
-            else:
-                aggregated_data = index_function_by_name(index_name, sliced_data, axis=0, threshold=threshold, base_period=base_period)
+            aggregated_data = index_function_by_name(index_name, sliced_data, axis=0, threshold=threshold,
+                                                     base_period=base_period)
+            start_date = datetime.strptime(start_date, '%Y-%m-%d')
+            end_date = datetime.strptime(end_date, '%Y-%m-%d')
+            # time_values = dataset.variables['time']
+            dates = [safe_cftime_to_datetime(nc.num2date(time_val, time_variable.units)) for time_val in time_variable[:]]
+
+            # Find indices corresponding to the specified area
+            lon_indices = np.where((xlon >= lon11) & (xlon <= lon22))[1]
+            lat_indices = np.where((xlat >= lat11) & (xlat <= lat33))[0]
+
+            area_data = data[:, lat_indices[0], lon_indices[0]]
+            filtered_indices = [i for i, date in enumerate(dates) if start_date <= date <= end_date]
+            filtered_dates = [dates[i] for i in filtered_indices]
+            filtered_data = area_data[filtered_indices]
+            time_chart_str = plot_index_with_explanation(filtered_dates, filtered_data, index_name, )
         else:
             raise ValueError("Unsupported data shape. Expected 2D or 3D+ data.")
 
@@ -1139,10 +1259,9 @@ def plot_time_custom_function_with_dates(file_path, variable_name, start_date=No
                 levels = levels[::-1]
             elif levels[0] == levels[-1]:
                 levels = np.linspace(levels[0], levels[0] + 1, num=10)
-            # print(f"Sorted levels: {levels}")
         else:
             levels = np.linspace(np.min(aggregated_data), np.max(aggregated_data), num=10)
-            # print(f"Default levels: {levels}")
+
         contour = plt.contourf(xlon, xlat, aggregated_data, levels=levels, cmap=cmap, transform=ccrs.PlateCarree())
         ax.coastlines()
         cbar = plt.colorbar(contour, orientation='horizontal')
@@ -1171,6 +1290,7 @@ def plot_time_custom_function_with_dates(file_path, variable_name, start_date=No
             extent = [x_min, x_max, y_min, y_max]
 
         ax.set_extent(extent, crs=ccrs.PlateCarree())
+        # plt.show()
 
         # Save the plot to a BytesIO object and encode it as a base64 string
         img_buf = io.BytesIO()
@@ -1178,9 +1298,62 @@ def plot_time_custom_function_with_dates(file_path, variable_name, start_date=No
         img_buf.seek(0)
         img_str = base64.b64encode(img_buf.read()).decode('utf-8')
         plt.close(fig)
-        return img_str
+        return img_str, time_chart_str
+
     finally:
         dataset.close()
+
+def safe_cftime_to_datetime(cftime_obj):
+    try:
+        return cftime_obj.to_datetime()
+
+    except AttributeError:
+        return datetime(cftime_obj.year, cftime_obj.month, cftime_obj.day)
+
+
+def plot_index_with_explanation(filtered_dates, filtered_data, index_name):
+    # Plotting
+    plt.figure(figsize=(12, 8))
+    plt.plot(filtered_dates, filtered_data, label=f'{index_name} Index', alpha=0.7)
+
+    # Adding annotations and text boxes
+    plt.xlabel('Time')
+    plt.ylabel(f'{index_name} Value')
+    plt.title(f'{index_name} Time Series')
+
+    # Highlighting specific points of interest (example: max index value)
+    if filtered_data.size > 0:
+        max_precipitation_idx = np.argmax(filtered_data)
+        max_index_value_date = filtered_dates[max_precipitation_idx]
+        max_index_value = filtered_data[max_precipitation_idx]
+
+        plt.annotate(f'Max {index_name}: {max_index_value:.2f}',
+                     xy=(max_index_value_date, max_index_value),
+                     xytext=(max_index_value_date + timedelta(days=30), max_index_value + 10),
+                     arrowprops=dict(facecolor='red', shrink=0.05),
+                     fontsize=10, color='red')
+
+    # Adding a text box for overall explanation
+    textstr = (f'This plot shows the {index_name} values\n'
+               f'for the specified area over the period from {filtered_dates[0].strftime("%Y-%m-%d")}\n'
+               f'to {filtered_dates[-1].strftime("%Y-%m-%d")}. Peaks in the plot indicate significant events,\n'
+               f'which are critical for understanding climate patterns.')
+
+    props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
+    plt.text(0.05, 0.95, textstr, transform=plt.gca().transAxes, fontsize=12,
+             verticalalignment='top', bbox=props)
+
+    plt.legend()
+    plt.grid(True)
+    plt.show()
+
+    # Save the plot to a BytesIO object and encode it as a base64 string
+    img_buf = io.BytesIO()
+    plt.savefig(img_buf, format='png')
+    img_buf.seek(0)
+    img_str = base64.b64encode(img_buf.read()).decode('utf-8')
+    plt.close()
+    return img_str
 
 
 @app.route('/plot_local', methods=['POST'])
@@ -1202,12 +1375,12 @@ def plot_endpoint():
     lat3 = request_data.get('lat3')
 
     try:
-        img_str = plot_time_custom_function_with_dates(
+        img_str, time_chart = plot_time_custom_function_with_dates(
             file_path, variable_name, start_date, end_date,
             start_year, end_year, season, index_name, data_type,
             lon1, lat1, lon3, lat3
         )
-        return jsonify({"image": img_str}), 200
+        return jsonify({"image": img_str, "time_chart": time_chart}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
@@ -1242,12 +1415,12 @@ def plot_firebase_endpoint():
     blob.download_to_filename(file_name)
 
     try:
-        img_str = plot_time_custom_function_with_dates(
+        img_str, time_chart = plot_time_custom_function_with_dates(
             file_name, variable_name, start_date, end_date,
             start_year, end_year, season, index_name, data_type,
             lon1, lat1, lon3, lat3
         )
-        return jsonify({"image": img_str}), 200
+        return jsonify({"image": img_str, "time_chart": time_chart}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
@@ -1346,6 +1519,15 @@ def get_all_sectors():
         return jsonify(sectors), 200
     except FirebaseError as e:
         error_message = f'Error retrieving sectors: {str(e)}'
+        return jsonify({'error': error_message}), 500
+
+@app.route('/available_indexes', methods=['GET'])
+def get_availale_indexes():
+    try:
+        return jsonify(['FD', 'TR',
+                        'TNx', 'TNn', 'TN10p', 'TN90p', 'TNm', 'TNlt2', 'TNltm2', 'TNltm20', 'SU', 'ID', 'TXx', 'TXn', 'TXm', 'TX90p', 'TX10p', 'TXge30', 'TXge35', 'TXgt50p', 'Rx1day', 'Rx5day', 'WSDI', 'GSL', 'HDD', 'CDD', 'Gdd', 'TMm', 'TMge5', 'TMlt5', 'TMge10', 'TMlt10', 'ETR', 'DTR', 'TXbdTNbd', 'SDII', 'R10mm', 'R20mm', 'Rnnmm', 'Rnnmm', 'CDD', 'CWD', 'R95p', 'R99p', 'PRCPTOT', 'R95pTOT', 'R99pTOT']), 200
+    except FirebaseError as e:
+        error_message = f'Error retrieving indexes: {str(e)}'
         return jsonify({'error': error_message}), 500
 
 

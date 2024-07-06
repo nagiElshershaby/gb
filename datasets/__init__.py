@@ -1,3 +1,5 @@
+import matplotlib.pyplot as plt
+import cartopy.crs as ccrs
 import base64
 import io
 
@@ -9,8 +11,6 @@ import numpy as np
 import uuid
 import netCDF4 as nc
 import cftime
-import matplotlib.pyplot as plt
-import cartopy.crs as ccrs
 from datetime import datetime
 
 from flask import Flask, request, jsonify
